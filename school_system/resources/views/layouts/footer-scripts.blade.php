@@ -4,8 +4,7 @@
 <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
 <!-- plugin_path -->
 <script>
-    var plugin_path = 'js/';
-
+    var plugin_path = '{{ asset('assets/js') }}/';
 </script>
 
 <!-- chart -->
@@ -20,6 +19,8 @@
 <script src="{{ URL::asset('assets/js/datepicker.js') }}"></script>
 <!-- sweetalert2 -->
 <script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
+{{-- @toastr_js --}}
+{{-- @toastr_render --}}
 <!-- toastr -->
 @yield('js')
 <script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
