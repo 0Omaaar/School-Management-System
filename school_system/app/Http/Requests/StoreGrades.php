@@ -23,7 +23,6 @@ class StoreGrades extends FormRequest
     {
         return [
             'Name' => 'required',
-            'Notes' => 'required',
         ];
     }
 }

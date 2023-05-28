@@ -39,7 +39,7 @@ class GradeController extends Controller
             $grade = new Grade();
 
             $grade->Name = $validated['Name'];
-            $grade->Notes = $validated['Notes'];
+            $grade->Notes = $request->Notes;
 
             $grade->save();
 
@@ -70,16 +70,34 @@ class GradeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreGrades $request, $id)
     {
-        //
+        try {
+            $validated = $request->validated();
+            $grade = Grade::findOrFail($id);
+            $grade->update([
+                $grade->Name = $validated['Name'],
+                $grade->Notes = $request->Notes,
+            ]);
+            toastr()->success("Grade Updated !");
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        try {
+            $grade = Grade::findOrFail($id);
+            $grade->delete();
+            toastr()->error("Grade Deleted !");
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }
