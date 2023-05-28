@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -23,5 +25,6 @@ Route::group(
     function () {
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('Grades', GradeController::class);
+        Route::resource('Classrooms', ClassroomController::class);
     }
 );

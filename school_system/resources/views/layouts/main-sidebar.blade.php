@@ -19,7 +19,7 @@
                     <!-- Grades-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
+                            <div class="pull-left"><i class="fa fa-school"></i><span
                                     class="right-nav-text">Grades</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -33,12 +33,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
                             <div class="pull-left"><i class="fa fa-building"></i><span
-                                    class="right-nav-text">Classes</span></div>
+                                    class="right-nav-text">Classerooms</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="">Classes List</a>
+                            <li><a href="{{route('Classrooms.index')}}">Classerooms List</a>
                             </li>
                         </ul>
                     </li>

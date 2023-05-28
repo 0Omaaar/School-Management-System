@@ -22,7 +22,7 @@ class StoreGrades extends FormRequest
     public function rules(): array
     {
         return [
-            'Name' => 'required',
+            'Name' => 'required|unique:Grades,Name',
         ];
     }
 }
