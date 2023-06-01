@@ -93,9 +93,16 @@ class GradeController extends Controller
     {
         try {
             $grade = Grade::findOrFail($id);
-            $grade->delete();
-            toastr()->error("Grade Deleted !");
-            return redirect()->back();
+
+            if($grade->classrooms->count() != 0){
+                toastr()->error("This Grade had already some classerooms, Please delete them first !");
+                return redirect()->back();
+            }
+            else{
+                $grade->delete();
+                toastr()->success("Grade Deleted !");
+                return redirect()->back();
+            }
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

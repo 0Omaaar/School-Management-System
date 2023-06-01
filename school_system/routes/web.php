@@ -26,5 +26,7 @@ Route::group(
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('Grades', GradeController::class);
         Route::resource('Classrooms', ClassroomController::class);
+        Route::post('/deleteAll', [ClassroomController::class, 'delete_all'])->name('delete_all');
+        Route::post('/searchByGrade', [ClassroomController::class, 'filter_classes'])->name('filter_classes');
     }
 );

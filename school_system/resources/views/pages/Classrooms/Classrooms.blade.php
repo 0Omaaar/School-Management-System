@@ -33,14 +33,26 @@
                 <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
                     Add Classroom
                 </button>
+                <button type="button" class="button x-small" id="btn_delete_all">Delete Checkboxes selected</button>
+                <br><br>
+                <form action="{{ route('filter_classes') }}" method="POST">
+                    @csrf
+                    <select class="selectpicker" data-style="btn-info" name="grade_id" required
+                        onchange="this.form.submit()">
+                        <option value="" selected disabled>Search By Grade</option>
+                        @foreach ($grades as $grade)
+                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                        @endforeach
+                    </select>
+                </form>
                 <br><br>
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                         style="text-align: center">
                         <thead>
                             <tr>
-                                {{-- <th><input name="select_all" id="example-select-all" type="checkbox"
-                                        onclick="CheckAll('box1', this)" /></th> --}}
+                                <th><input name="select_all" id="example-select-all" type="checkbox"
+                                        onclick="CheckAll('box1', this)" /></th>
                                 <th>#</th>
                                 <th>Classroom Name</th>
                                 <th>Grade Name</th>
@@ -48,14 +60,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($classrooms as $classroom)
+                            @if (isset($details))
+                                <?php $classListes = $details; ?>
+                            @else
+                                <?php $classListes = $classrooms; ?>
+                            @endif
+                            @foreach ($classListes as $classroom)
                                 <tr>
+                                    <td><input type="checkbox" value="{{ $classroom->id }}" class="box1"></td>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $classroom->name_class }}</td>
                                     <td>
-                                            {{ $classroom->grade->name }}
+                                        {{ $classroom->grade->name }}
                                     </td>
-
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#edit{{ $classroom->id }}" title="Edit"><i
@@ -100,10 +117,11 @@
                                                             :</label>
                                                         <select class="form-control form-control-lg"
                                                             id="exampleFormControlSelect1" name="grade_id">
-                                                            <option value="{{ $classroom->grade ? $classroom->grade->id : '' }}">
+                                                            <option
+                                                                value="{{ $classroom->grade ? $classroom->grade->id : '' }}">
                                                                 {{ $classroom->grade ? $classroom->grade->name : 'N/A' }}
                                                             </option>
-                                                            
+
                                                             @foreach ($grades as $grade)
                                                                 <option value="{{ $grade->id }}">
                                                                     {{ $grade->name }}
@@ -237,18 +255,65 @@
         </div>
 
     </div>
+
+
+    {{-- delete_all_checkboxes --}}
+    <div class="modal fade" id="delete_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                        Delete classrooms
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form action="{{ route('delete_all') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input class="text" type="hidden" id="delete_all_id" name="delete_all_id"
+                            value=''>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-</div>
 
-</div>
 
 <!-- row closed -->
 @endsection
 @section('js')
 @toastr_js
 @toastr_render
+
+<script>
+    function CheckAll(className, elem) {
+        var elements = document.getElementsByClassName(className);
+        var l = elements.length;
+
+        if (elem.checked) {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = false;
+            }
+        }
+    }
+</script>
+
 
 <script type="text/javascript">
     $(function() {

@@ -95,10 +95,27 @@ class ClassroomController extends Controller
         try {
             $classroom = Classroom::findOrFail($id);
             $classroom->delete();
-            toastr()->error("Classroom Deleted !");
+            toastr()->success("Classroom Deleted !");
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function delete_all(Request $request)
+    {
+        $delete_all_id = explode(",", $request->delete_all_id);
+
+        Classroom::whereIn('id', $delete_all_id)->Delete();
+        toastr()->error("Deleted !");
+        return redirect()->back();
+    }
+
+    public function filter_classes(Request $request)
+    {
+        $grades = Grade::all();
+        $search = Classroom::select('*')->where('grade_id', '=', $request->grade_id)->get();
+
+        return view('pages.Classrooms.Classrooms', compact('grades'))->withDetails($search);
     }
 }
