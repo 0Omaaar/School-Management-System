@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Grades', function (Blueprint $table) {
+        Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->string('Name')->unique();
-            $table->text('Notes')->nullable();
+            $table->string('name')->unique();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

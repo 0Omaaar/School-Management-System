@@ -38,8 +38,8 @@ class GradeController extends Controller
 
             $grade = new Grade();
 
-            $grade->Name = $validated['Name'];
-            $grade->Notes = $request->Notes;
+            $grade->name = $validated['name'];
+            $grade->notes = $request->notes;
 
             $grade->save();
 
@@ -76,8 +76,8 @@ class GradeController extends Controller
             $validated = $request->validated();
             $grade = Grade::findOrFail($id);
             $grade->update([
-                $grade->Name = $validated['Name'],
-                $grade->Notes = $request->Notes,
+                $grade->name = $validated['name'],
+                $grade->notes = $request->notes,
             ]);
             toastr()->success("Grade Updated !");
             return redirect()->back();

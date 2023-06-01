@@ -39,8 +39,8 @@
                         style="text-align: center">
                         <thead>
                             <tr>
-                                <th><input name="select_all" id="example-select-all" type="checkbox"
-                                        onclick="CheckAll('box1', this)" /></th>
+                                {{-- <th><input name="select_all" id="example-select-all" type="checkbox"
+                                        onclick="CheckAll('box1', this)" /></th> --}}
                                 <th>#</th>
                                 <th>Classroom Name</th>
                                 <th>Grade Name</th>
@@ -51,8 +51,11 @@
                             @foreach ($classrooms as $classroom)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $classroom->Name_Class }}</td>
-                                    <td>{{ $classroom->Grade->Grade_id }}</td>
+                                    <td>{{ $classroom->name_class }}</td>
+                                    <td>
+                                            {{ $classroom->grade->name }}
+                                    </td>
+
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#edit{{ $classroom->id }}" title="Edit"><i
@@ -87,22 +90,23 @@
                                                         <div class="col">
                                                             <label for="Name" class="mr-sm-2">Classroom Name
                                                                 :</label>
-                                                            <input id="Name" type="text" name="Name_Class"
+                                                            <input id="Name" type="text" name="name_class"
                                                                 class="form-control"
-                                                                value="{{ $classroom->Name_Class }}" required>
+                                                                value="{{ $classroom->name_class }}" required>
                                                         </div>
                                                     </div><br>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Grade Name
                                                             :</label>
                                                         <select class="form-control form-control-lg"
-                                                            id="exampleFormControlSelect1" name="Grade_id">
-                                                            <option value="{{ $classroom->Grade->id }}">
-                                                                {{ $classroom->Grade->Name }}
+                                                            id="exampleFormControlSelect1" name="grade_id">
+                                                            <option value="{{ $classroom->grade ? $classroom->grade->id : '' }}">
+                                                                {{ $classroom->grade ? $classroom->grade->name : 'N/A' }}
                                                             </option>
+                                                            
                                                             @foreach ($grades as $grade)
                                                                 <option value="{{ $grade->id }}">
-                                                                    {{ $grade->Name }}
+                                                                    {{ $grade->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -178,11 +182,10 @@
                                 <div data-repeater-list="List_Classes">
                                     <div data-repeater-item>
                                         <div class="row">
-
                                             <div class="col">
                                                 <label for="Name" class="mr-sm-2">Classroom Name
                                                     :</label>
-                                                <input class="form-control" type="text" name="Name_Class" />
+                                                <input class="form-control" type="text" name="name_class" />
                                             </div>
 
                                             <div class="col">
@@ -190,9 +193,9 @@
                                                     :</label>
 
                                                 <div class="box">
-                                                    <select class="fancyselect" name="Grade_id">
+                                                    <select class="fancyselect" name="grade_id">
                                                         @foreach ($grades as $grade)
-                                                            <option value="{{ $grade->id }}">{{ $grade->Name }}
+                                                            <option value="{{ $grade->id }}">{{ $grade->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>

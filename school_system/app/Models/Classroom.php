@@ -9,10 +9,10 @@ class Classroom extends Model
 {
     use HasFactory;
 
-    protected $table = 'Classrooms';
-    protected $fillable = ['Name_Class', 'Grade_id'];
+    protected $table = 'classrooms';
+    protected $fillable = ['name_class', 'grade_id'];
 
-    public function Grade(){
+    public function grade(){
         return $this->belongsTo(Grade::class);
     }
 }

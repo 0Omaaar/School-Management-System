@@ -55,8 +55,8 @@
                             @foreach ($grades as $grade)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $grade->Name }}</td>
-                                    <td>{{ $grade->Notes }}</td>
+                                    <td>{{ $grade->name }}</td>
+                                    <td>{{ $grade->notes }}</td>
                                     <td align="center">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#edit{{ $grade->id }}" title="Edit"><i
@@ -120,13 +120,13 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <label for="Name_en" class="mr-sm-2">Name:</label>
-                                                            <input type="text" class="form-control" name="Name"
-                                                                required value="{{ $grade->Name }}">
+                                                            <input type="text" class="form-control" name="name"
+                                                                required value="{{ $grade->name }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Notes:</label>
-                                                        <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1" rows="3">{{ $grade->Notes }}</textarea>
+                                                        <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="3">{{ $grade->notes }}</textarea>
                                                     </div>
                                                     <br><br>
                                             </div>
@@ -165,7 +165,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="Name_en" class="mr-sm-2">Name:</label>
-                                <input type="text" class="form-control" name="Name" required>
+                                <input type="text" class="form-control" name="name" required>
                             </div>
                         </div>
                         <div class="form-group">
