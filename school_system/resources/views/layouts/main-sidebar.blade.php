@@ -53,7 +53,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="">Sections List</a>
+                            <li><a href="{{route('Sections.index')}}">Sections List</a>
                             </li>
                         </ul>
                     </li>
