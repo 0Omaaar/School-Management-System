@@ -138,8 +138,6 @@
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="">Parents List</a> </li>
-                        </ul>
-                        <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{url('/add_parent')}}">Add Parent</a> </li>
                         </ul>
                     </li>
