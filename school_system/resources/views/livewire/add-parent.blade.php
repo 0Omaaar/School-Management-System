@@ -6,7 +6,12 @@
         </div>
     @endif
 
-
+    @if ($catchError)
+        <div class="alert alert-danger" id="success-danger">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            {{ $catchError }}
+        </div>
+    @endif
 
 
     <div class="stepwizard">
@@ -37,16 +42,16 @@
     <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
         @if ($currentStep != 3)
             <div style="display: none" class="row setup-content" id="step-3">
-                @endif
-                <div class="col-xs-12">
-                    <div class="col-md-12">
-                        <h3 style="font-family: 'Cairo', sans-serif;">Are You Sure To Save This Informations ?</h3><br>
-                        <button class="btn btn-danger btn-sm nextBtn btn-lg" type="button"
-                                wire:click="backSecond">Back</button>
-                        <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
-                                type="button">Save</button>
-                    </div>
-                </div>
+        @endif
+        <div class="col-xs-12">
+            <div class="col-md-12">
+                <h3 style="font-family: 'Cairo', sans-serif;">Are You Sure To Save This Informations ?</h3><br>
+                <button class="btn btn-danger btn-sm nextBtn btn-lg" type="button"
+                    wire:click="backSecond">Back</button>
+                <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
+                    type="button">Save</button>
             </div>
+        </div>
     </div>
+</div>
 </div>
