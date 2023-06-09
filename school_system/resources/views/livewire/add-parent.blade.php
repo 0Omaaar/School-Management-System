@@ -44,7 +44,13 @@
             <div style="display: none" class="row setup-content" id="step-3">
         @endif
         <div class="col-xs-12">
-            <div class="col-md-12">
+            <div class="col-md-12"><br>
+                <label style="color: red">Parents Attachments</label>
+                <div class="form-group">
+                    <input type="file" wire:model="photos" accept="image/*" multiple>
+                </div>
+                <br>
+                {{-- <input type="hidden" wire:model="Parent_id"> --}}
                 <h3 style="font-family: 'Cairo', sans-serif;">Are You Sure To Save This Informations ?</h3><br>
                 <button class="btn btn-danger btn-sm nextBtn btn-lg" type="button"
                     wire:click="backSecond">Back</button>
