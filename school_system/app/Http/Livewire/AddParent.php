@@ -4,15 +4,19 @@ namespace App\Http\Livewire;
 
 use App\Models\MyParent;
 use App\Models\Nationalitiev2;
+use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\TypeBlood;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddParent extends Component
 {
+    use WithFileUploads;
     public $successMessage = '';
-    public $catchError;
+    public $updateMode = false;
+    public $catchError, $photos;
     public $currentStep = 1;
     public $address_father, $religion_father_id, $blood_type_father_id, $nationality_father_id, $phone_father, $passport_id_father, $national_id_father, $job_father, $name_father, $password, $email;
     public $address_mother, $religion_mother_id, $blood_type_mother_id, $nationality_mother_id, $phone_mother, $passport_id_mother, $national_id_mother, $job_mother, $name_mother;
@@ -112,15 +116,15 @@ class AddParent extends Component
 
             $my_parent->save();
 
-            // if (!empty($this->photos)) {
-            //     foreach ($this->photos as $photo) {
-            //         $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
-            //         ParentAttachment::create([
-            //             'file_name' => $photo->getClientOriginalName(),
-            //             'parent_id' => My_Parent::latest()->first()->id,
-            //         ]);
-            //     }
-            // }
+            if (!empty($this->photos)) {
+                foreach ($this->photos as $photo) {
+                    $photo->storeAs($this->national_id_father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+                    ParentAttachment::create([
+                        'file_name' => $photo->getClientOriginalName(),
+                        'parent_id' => MyParent::latest()->first()->id,
+                    ]);
+                }
+            }
             $this->successMessage = 'success';
             $this->clearForm();
             $this->currentStep = 1;
