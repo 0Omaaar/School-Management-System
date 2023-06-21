@@ -122,7 +122,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">Teachers List</a>
+                            <li> <a href="{{route('Teachers.index')}}">Teachers List</a>
                             </li>
                         </ul>
                     </li>
