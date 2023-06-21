@@ -89,19 +89,19 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        {{--  @if ($updateMode) --}}
-        {{-- <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit_edit"
+        @if ($updateMode)
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStepSubmit_edit"
                 type="button">Next
-            </button> --}}
-        {{-- @else --}}
-        
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStepSubmit"
-            type="button">Next
-        </button>
-        <button class="btn btn-danger btn-sm nextBtn btn-lg " wire:click="firstStepBack"
-        type="button">Back
-    </button>
-        {{--  @endif --}}
+            </button>
+            <button class="btn btn-danger btn-sm nextBtn btn-lg " wire:click="firstStepBack" type="button">Back
+            </button>
+        @else
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStepSubmit"
+                type="button">Next
+            </button>
+            <button class="btn btn-danger btn-sm nextBtn btn-lg " wire:click="firstStepBack" type="button">Back
+            </button>
+        @endif
     </div>
 </div>
 </div>

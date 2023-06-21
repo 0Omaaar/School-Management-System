@@ -137,8 +137,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">Parents List</a> </li>
-                            <li> <a href="{{url('/add_parent')}}">Add Parent</a> </li>
+                            <li> <a href="{{url('/add_parent')}}">Parents List</a> </li>
                         </ul>
                     </li>
 

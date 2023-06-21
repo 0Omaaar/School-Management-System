@@ -16,8 +16,8 @@ class AddParent extends Component
     use WithFileUploads;
     public $successMessage = '';
     public $updateMode = false;
-    public $catchError, $photos;
-    public $currentStep = 1;
+    public $catchError, $photos, $show_table = true;
+    public $currentStep = 1, $parent_id;
     public $address_father, $religion_father_id, $blood_type_father_id, $nationality_father_id, $phone_father, $passport_id_father, $national_id_father, $job_father, $name_father, $password, $email;
     public $address_mother, $religion_mother_id, $blood_type_mother_id, $nationality_mother_id, $phone_mother, $passport_id_mother, $national_id_mother, $job_mother, $name_mother;
 
@@ -40,7 +40,8 @@ class AddParent extends Component
         return view('livewire.add-parent', [
             'nationalities' => Nationalitiev2::all(),
             'type_bloods' => TypeBlood::all(),
-            'religions' => Religion::all()
+            'religions' => Religion::all(),
+            'my_parents' => MyParent::all(),
         ]);
     }
 
@@ -63,6 +64,12 @@ class AddParent extends Component
         $this->currentStep = 2;
     }
 
+    public function firstStepSubmit_edit()
+    {
+        $this->currentStep = 2;
+        $this->updateMode = true;
+    }
+
     public function secondStepSubmit()
     {
         $this->validate([
@@ -80,7 +87,11 @@ class AddParent extends Component
         $this->currentStep = 3;
     }
 
-
+    public function secondStepSubmit_edit()
+    {
+        $this->currentStep = 3;
+        $this->updateMode = true;
+    }
 
     public function submitForm()
     {
@@ -92,7 +103,6 @@ class AddParent extends Component
             $my_parent->password = Hash::make($this->password);
             $my_parent->name_father = $this->name_father;
             $my_parent->national_id_father = $this->national_id_father;
-            $my_parent->passport_id_father = $this->passport_id_father;
             $my_parent->phone_father = $this->phone_father;
             $my_parent->job_father = $this->job_father;
             $my_parent->passport_id_father = $this->passport_id_father;
@@ -107,7 +117,6 @@ class AddParent extends Component
             $my_parent->passport_id_mother = $this->passport_id_mother;
             $my_parent->phone_mother = $this->phone_mother;
             $my_parent->job_mother = $this->job_mother;
-            $my_parent->passport_id_mother = $this->passport_id_mother;
             $my_parent->nationality_mother_id = $this->nationality_mother_id;
             $my_parent->blood_type_mother_id = $this->blood_type_mother_id;
             $my_parent->religion_mother_id = $this->religion_mother_id;
@@ -132,6 +141,74 @@ class AddParent extends Component
             $this->catchError = $e->getMessage();
         }
         ;
+    }
+
+    public function submitForm_edit()
+    {
+        if ($this->parent_id) {
+            $parent = MyParent::find($this->parent_id);
+            $parent->update([
+                'passport_id_father' => $this->passport_id_father,
+                'email' => $this->email,
+                'name_father' => $this->name_father,
+                'phone_father' => $this->phone_father,
+                'job_father' => $this->job_father,
+                'national_id_father' => $this->national_id_father,
+                'nationality_father_id' => $this->nationality_father_id,
+                'blood_type_father_id' => $this->blood_type_father_id,
+                'religion_father_id' => $this->religion_father_id,
+                'address_father' => $this->address_father,
+
+                'passport_id_mother' => $this->passport_id_mother,
+                'name_mother' => $this->name_mother,
+                'phone_mother' => $this->phone_mother,
+                'job_mother' => $this->job_mother,
+                'national_id_mother' => $this->national_id_mother,
+                'nationality_mother_id' => $this->nationality_mother_id,
+                'blood_type_mother_id' => $this->blood_type_mother_id,
+                'religion_mother_id' => $this->religion_mother_id,
+                'address_mother' => $this->address_mother,
+            ]);
+
+        }
+
+        return redirect()->to('/add_parent');
+    }
+
+    public function edit($id)
+    {
+        $this->show_table = false;
+        $this->updateMode = true;
+        $My_Parent = MyParent::where('id', $id)->first();
+        $this->parent_id = $id;
+        $this->email = $My_Parent->email;
+        $this->password = $My_Parent->password;
+        $this->name_father = $My_Parent->name_father;
+        $this->job_father = $My_Parent->job_father;
+        $this->national_id_father = $My_Parent->national_id_father;
+        $this->passport_id_father = $My_Parent->passport_id_father;
+        $this->phone_father = $My_Parent->phone_father;
+        $this->nationality_father_id = $My_Parent->nationality_father_id;
+        $this->blood_type_father_id = $My_Parent->blood_type_father_id;
+        $this->address_father = $My_Parent->address_father;
+        $this->religion_father_id = $My_Parent->religion_father_id;
+
+        $this->name_mother = $My_Parent->name_mother;
+        $this->job_mother = $My_Parent->job_mother;
+        $this->national_id_mother = $My_Parent->national_id_mother;
+        $this->passport_id_mother = $My_Parent->passport_id_mother;
+        $this->phone_mother = $My_Parent->phone_mother;
+        $this->nationality_mother_id = $My_Parent->nationality_mother_id;
+        $this->blood_type_mother_id = $My_Parent->blood_type_mother_id;
+        $this->address_mother = $My_Parent->address_mother;
+        $this->religion_mother_id = $My_Parent->religion_mother_id;
+    }
+
+    public function delete($id){
+        $parent = MyParent::findOrFail($id);
+        $parent->delete();
+        $this->successMessage = 'Deleted';
+        return redirect()->to('/add_parent');
     }
 
     public function clearForm()
@@ -169,5 +246,14 @@ class AddParent extends Component
     public function backSecond()
     {
         $this->currentStep = 2;
+    }
+
+    public function showformadd()
+    {
+        $this->show_table = false;
+    }
+    public function showadd()
+    {
+        $this->show_table = true;
     }
 }
