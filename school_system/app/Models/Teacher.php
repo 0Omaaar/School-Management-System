@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function gender(){
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function specialisation(){
+        return $this->belongsTo(Specialisation::class);
+    }
 }
