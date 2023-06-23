@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSections;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -18,8 +19,10 @@ class SectionController extends Controller
     {
         $grades = Grade::with(['sections'])->get();
         $list_grades = Grade::all();
+        $teachers = Teacher::all();
 
-        return view('pages.Sections.Sections', compact('list_grades', 'grades'));
+
+        return view('pages.Sections.Sections', compact('list_grades', 'grades', 'teachers'));
     }
 
     public function getclasses($id)
@@ -53,6 +56,8 @@ class SectionController extends Controller
             $section->classroom_id = $validated['classroom_id'];
 
             $section->save();
+
+            $section->teachers()->attach($request->teacher_id);
 
             toastr()->success('Section added successfully !');
 
