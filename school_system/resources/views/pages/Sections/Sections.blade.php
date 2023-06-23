@@ -187,6 +187,28 @@
                                                                                                     for="exampleCheck1">Status</label>
                                                                                             </div>
                                                                                         </div>
+                                                                                        <div class="col">
+                                                                                            <label for="inputName"
+                                                                                                class="control-label">Name Teacher</label>
+                                                                                            <select multiple
+                                                                                                name="teacher_id[]"
+                                                                                                class="form-control"
+                                                                                                id="exampleFormControlSelect2">
+                                                                                                @foreach ($list_Sections->teachers as $teacher)
+                                                                                                    <option selected
+                                                                                                        value="{{ $teacher['id'] }}">
+                                                                                                        {{ $teacher['name'] }}
+                                                                                                    </option>
+                                                                                                @endforeach
+
+                                                                                                @foreach ($teachers as $teacher)
+                                                                                                    <option
+                                                                                                        value="{{ $teacher->id }}">
+                                                                                                        {{ $teacher->name }}
+                                                                                                    </option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"

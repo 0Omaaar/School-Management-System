@@ -96,11 +96,17 @@ class SectionController extends Controller
             } else {
                 $status = 0;
             }
+            if(isset($request->teacher_id)){
+                $section->teachers()->sync($request->teacher_id);
+            }else{
+                $section->teachers()->sync(array());
+            }
             $section->update([
                 $section->name_section = $validated['name_section'],
                 $section->grade_id = $validated['grade_id'],
                 $section->classroom_id = $validated['classroom_id'],
                 $section->status = $status,
+
             ]);
             toastr()->success("Section Updated !");
             return redirect()->back();
