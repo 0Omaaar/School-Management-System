@@ -75,9 +75,9 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p> Warning Grade</p>
-                                                                <input type="hidden" name="id"
-                                                                    value="{{ $teacher->id }}">
+                                                                <p>Warning</p>
+                                                                {{-- <input type="hidden" name="id"
+                                                                    value="{{ $teacher->id }}"> --}}
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="modal-footer">

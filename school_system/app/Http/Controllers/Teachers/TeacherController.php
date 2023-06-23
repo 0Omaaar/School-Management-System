@@ -43,4 +43,9 @@ class TeacherController extends Controller
     {
         return $this->teacher->updateTeacher($request, $id);
     }
+
+    public function destroy($id)
+    {
+        return $this->teacher->deleteTeacher($id);
+    }
 }

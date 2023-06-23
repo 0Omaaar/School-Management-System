@@ -9,6 +9,7 @@ interface TeacherRepositoryInterface{
     public function storeTeachers($request);
     public function editTeacher($id);
     public function updateTeacher($request, $id);
+    public function deleteTeacher($id);
 
 }
 
