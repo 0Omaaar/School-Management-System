@@ -74,9 +74,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Student_information" class="collapse">
-                                    <li> <a href="">Add Studen</a>
+                                    <li> <a href="{{route('Students.create')}}">Add Student</a>
                                     </li>
-                                    <li> <a href="">Students List</a>
+                                    <li> <a href="{{route('Students.index')}}">Students List</a>
                                     </li>
                                 </ul>
                             </li>
