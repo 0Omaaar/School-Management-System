@@ -42,5 +42,7 @@ Route::group(
         Route::resource('Teachers', TeacherController::class);
 
         Route::resource('Students', StudentController::class);
+        Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
+        Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
     }
 );

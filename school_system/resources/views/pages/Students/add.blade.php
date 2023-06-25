@@ -36,8 +36,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Name : <span
-                                        class="text-danger">*</span></label>
+                                <label>Name : <span class="text-danger">*</span></label>
                                 <input type="text" name="name" class="form-control">
                             </div>
                         </div>
@@ -61,8 +60,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="gender">Gender : <span
-                                        class="text-danger">*</span></label>
+                                <label for="gender">Gender : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="gender_id">
                                     <option selected disabled>Choose...</option>
                                     @foreach ($genders as $gender)
@@ -74,8 +72,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="nal_id">Nationality : <span
-                                        class="text-danger">*</span></label>
+                                <label for="nal_id">Nationality : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="nationalitie_id">
                                     <option selected disabled>Choose...</option>
                                     @foreach ($nationalities as $nal)
@@ -112,8 +109,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="Grade_id">Grade : <span
-                                        class="text-danger">*</span></label>
+                                <label for="Grade_id">Grade : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>Choose...</option>
                                     @foreach ($grades as $c)
@@ -125,8 +121,7 @@
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="Classroom_id">Classrooms : <span
-                                        class="text-danger">*</span></label>
+                                <label for="classroom_id">Classrooms : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="classroom_id">
 
                                 </select>
@@ -144,8 +139,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="parent_id">Parent : <span
-                                        class="text-danger">*</span></label>
+                                <label for="parent_id">Parent : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="parent_id">
                                     <option selected disabled>Choose...</option>
                                     @foreach ($parents as $parent)
@@ -157,8 +151,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="academic_year">Academic Year : <span
-                                        class="text-danger">*</span></label>
+                                <label for="academic_year">Academic Year : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="academic_year">
                                     <option selected disabled>Choose...</option>
                                     @php
@@ -171,8 +164,7 @@
                             </div>
                         </div>
                     </div><br>
-                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
-                        type="submit">Submit</button>
+                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Submit</button>
                 </form>
 
             </div>
@@ -195,10 +187,10 @@
                     dataType: "json",
                     success: function(data) {
                         $('select[name="classroom_id"]').empty();
+                        $('select[name="classroom_id"]').append(
+                                '<option selected disabled >Choose...</option>'
+                                );
                         $.each(data, function(key, value) {
-                            $('select[name="classroom_id"]').append(
-                                '<option selected disabled >{{ trans('Parent_trans.Choose') }}...</option>'
-                            );
                             $('select[name="classroom_id"]').append(
                                 '<option value="' + key + '">' + value +
                                 '</option>');
@@ -217,10 +209,10 @@
 <script>
     $(document).ready(function() {
         $('select[name="classroom_id"]').on('change', function() {
-            var Classroom_id = $(this).val();
-            if (Classroom_id) {
+            var classroom_id = $(this).val();
+            if (classroom_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    url: "{{ URL::to('Get_sections') }}/" + classroom_id,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
