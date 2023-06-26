@@ -26,7 +26,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        
+        return $this->student->Get_students();
     }
 
     /**
@@ -58,7 +58,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return $this->student->edit_student($id);
     }
 
     /**

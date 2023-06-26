@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentRepository implements StudentRepositoryInterface
 {
+    public function Get_students(){
+        $students = Student::all();
+
+        return view('pages.Students.index', compact('students'));
+    }
     public function create_student()
     {
         $data['grades'] = Grade::all();
@@ -26,7 +31,18 @@ class StudentRepository implements StudentRepositoryInterface
         $data['nationalities'] = Nationalitiev2::all();
         $data['bloods'] = TypeBlood::all();
 
-        return view('pages.Students.add', $data);
+        return view('pages.Students.index', $data);
+    }
+
+    public function edit_student($id)
+    {
+        $data['Grades'] = Grade::all();
+        $data['parents'] = MyParent::all();
+        $data['Genders'] = Gender::all();
+        $data['nationals'] = Nationalitiev2::all();
+        $data['bloods'] = TypeBlood::all();
+        $Students =  Student::findOrFail($id);
+        return view('pages.Students.edit',$data,compact('Students'));
     }
 
     public function Get_classrooms($id)
