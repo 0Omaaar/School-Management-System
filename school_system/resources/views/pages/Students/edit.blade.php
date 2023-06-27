@@ -135,7 +135,7 @@
                             <div class="form-group">
                                 <label for="Classroom_id">Classrooms : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="classroom_id">
-                                    <option value="{{ $Students->Ccassroom_id }}">
+                                    <option value="{{ $Students->classroom_id }}">
                                         {{ $Students->classroom->name_class }}</option>
                                 </select>
                             </div>

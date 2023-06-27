@@ -64,9 +64,9 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreStudentsRequest $request, $id)
     {
-        //
+        return $this->student->update_student($request, $id);
     }
 
     /**

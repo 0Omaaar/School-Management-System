@@ -82,6 +82,29 @@ class StudentRepository implements StudentRepositoryInterface
         }
     }
 
+    public function update_student($request, $id){
+        try {
+            $students = Student::findOrFail($id);
+            $students->name = $request->name;
+            $students->email = $request->email;
+            $students->password = Hash::make($request->password);
+            $students->gender_id = $request->gender_id;
+            $students->nationalitie_id = $request->nationalitie_id;
+            $students->blood_id = $request->blood_id;
+            $students->date_birth = $request->date_birth;
+            $students->grade_id = $request->grade_id;
+            $students->classroom_id = $request->classroom_id;
+            $students->section_id = $request->section_id;
+            $students->parent_id = $request->parent_id;
+            $students->academic_year = $request->academic_year;
+            $students->save();
+            toastr()->success('success');
+            return redirect()->route('Students.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
 }
 
 

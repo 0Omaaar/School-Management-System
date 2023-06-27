@@ -55,13 +55,13 @@
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
                                                         data-target="#Delete_Student{{ $student->id }}"
-                                                        title="{{ trans('Grades_trans.Delete') }}"><i
+                                                        title="Delete"><i
                                                             class="fa fa-trash"></i></button>
                                                     <a href="#" class="btn btn-warning btn-sm" role="button"
-                                                        aria-pressed="true"><i class="far fa-eye"></i></a>
+                                                        aria-pressed="true"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
-                                            {{-- @include('pages.Students.Delete') --}}
+                                            @include('pages.Students.delete')
                                         @endforeach
                                 </table>
                             </div>
