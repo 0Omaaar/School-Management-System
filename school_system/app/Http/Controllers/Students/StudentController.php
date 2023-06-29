@@ -74,6 +74,6 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->student->delete_student($id);
     }
 }

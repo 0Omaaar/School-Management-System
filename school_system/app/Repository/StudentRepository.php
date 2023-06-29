@@ -31,7 +31,7 @@ class StudentRepository implements StudentRepositoryInterface
         $data['nationalities'] = Nationalitiev2::all();
         $data['bloods'] = TypeBlood::all();
 
-        return view('pages.Students.index', $data);
+        return view('pages.Students.add', $data);
     }
 
     public function edit_student($id)
@@ -76,7 +76,7 @@ class StudentRepository implements StudentRepositoryInterface
             $students->academic_year = $request->academic_year;
             $students->save();
             toastr()->success('success');
-            return redirect()->route('Students.create');
+            return redirect()->route('Students.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -99,6 +99,17 @@ class StudentRepository implements StudentRepositoryInterface
             $students->academic_year = $request->academic_year;
             $students->save();
             toastr()->success('success');
+            return redirect()->route('Students.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function delete_student($id){
+        try {
+            $student = Student::findOrFail($id);
+            $student->delete();
+            toastr()->success('Deleted');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
