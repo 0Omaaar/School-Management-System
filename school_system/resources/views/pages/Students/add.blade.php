@@ -163,6 +163,13 @@
                                 </select>
                             </div>
                         </div>
+                        <br>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Student Attachements : <span class="text-danger">*</span></label>
+                                <input type="file" accept="image/*" name="photos[]" multiple>
+                            </div>
+                        </div>
                     </div><br>
                     <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Submit</button>
                 </form>

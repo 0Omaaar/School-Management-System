@@ -20,7 +20,6 @@ class StudentRepository implements StudentRepositoryInterface
 {
     public function Get_students(){
         $students = Student::all();
-
         return view('pages.Students.index', compact('students'));
     }
     public function create_student()

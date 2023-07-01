@@ -23,7 +23,7 @@ class Student extends Model
     public function section(){
         return $this->belongsTo(Section::class);
     }
-    public function image(){
+    public function images(){
         return $this->morphMany(Image::class, 'imageable');
     }
 }
