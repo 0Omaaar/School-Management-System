@@ -1,0 +1,22 @@
+
+
+.container{
+    margin-top: 220px;
+}
+
+.card-header{
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: green;
+}
+
+.btn{
+    color: green;
+}
+
+.link{
+    color: green;
+    list-style: none;
+    letter-spacing: 1px;
+    text-decoration: none;
+}

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Classroom;
 use App\Models\Gender;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\MyParent;
 use App\Models\Nationalitiev2;
 use App\Models\Section;
@@ -74,6 +75,22 @@ class StudentRepository implements StudentRepositoryInterface
             $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;
             $students->save();
+
+            // if($request->hasfile('photos'))
+            // {
+                foreach($request->file('photos') as $file){
+                    $name = $file->getClientOriginalName();
+                    $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(), 'upload_attachments');
+
+                    $images = new Image();
+                    $images->filename = $name;
+                    $images->imageable_id = $students->id;
+                    $images->imageable_type = 'App\Models\Student';
+                    $images->save();
+                }
+            // }
+
+
             toastr()->success('success');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {

@@ -29,7 +29,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('Students.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('Students.store') }}" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <h6 style="font-family: 'Cairo', sans-serif;color: blue">
                         Personal Informations</h6><br>

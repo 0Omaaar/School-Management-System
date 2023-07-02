@@ -1,7 +1,7 @@
 @extends('base')
 @section('content')
     <main class="signup-form">
-        <div class="cotainer">
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="card">
@@ -32,7 +32,10 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="remember"> Remember Me</label>
+                                        <label>
+                                            Already have an account ?
+                                        </label>
+                                        <a href="{{route('login')}}" class="link">Login</a>
                                     </div>
                                 </div>
                                 <div class="d-grid mx-auto">
