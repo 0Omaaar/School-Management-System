@@ -13,6 +13,7 @@ use App\Models\Specialisation;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TypeBlood;
+use DB;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
@@ -60,6 +61,7 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function store_student($request)
     {
+        DB::beginTransaction();
         try {
             $students = new Student();
             $students->name = $request->name;
@@ -76,8 +78,8 @@ class StudentRepository implements StudentRepositoryInterface
             $students->academic_year = $request->academic_year;
             $students->save();
 
-            // if($request->hasfile('photos'))
-            // {
+            if($request->hasfile('photos'))
+            {
                 foreach($request->file('photos') as $file){
                     $name = $file->getClientOriginalName();
                     $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(), 'upload_attachments');
@@ -88,12 +90,14 @@ class StudentRepository implements StudentRepositoryInterface
                     $images->imageable_type = 'App\Models\Student';
                     $images->save();
                 }
-            // }
+            }
 
+            DB::commit();
 
             toastr()->success('success');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
