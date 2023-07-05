@@ -42,6 +42,8 @@ Route::group(
         Route::resource('Teachers', TeacherController::class);
 
         Route::resource('Students', StudentController::class);
+        Route::post('/upload_attachments', StudentController::class, 'upload_attachments')->name('upload_attachments');
+
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
     }

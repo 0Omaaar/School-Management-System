@@ -24,6 +24,12 @@ class StudentRepository implements StudentRepositoryInterface
         $students = Student::all();
         return view('pages.Students.index', compact('students'));
     }
+
+    public function show_student($id){
+        $Student = Student::findOrFail($id);
+        
+        return view('pages.Students.show', compact('Student'));
+    }
     public function create_student()
     {
         $data['grades'] = Grade::all();
@@ -123,6 +129,10 @@ class StudentRepository implements StudentRepositoryInterface
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function upload_attachments($request){
+        
     }
 
     public function delete_student($id){

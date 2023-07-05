@@ -48,9 +48,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        return $this->student->show_student($id);
     }
 
     /**
@@ -67,6 +67,10 @@ class StudentController extends Controller
     public function update(StoreStudentsRequest $request, $id)
     {
         return $this->student->update_student($request, $id);
+    }
+
+    public function upload_attachments(Request $request){
+        return $this->student->upload_attachments($request);
     }
 
     /**
