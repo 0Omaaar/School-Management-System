@@ -16,6 +16,7 @@ use App\Models\TypeBlood;
 use DB;
 use Exception;
 use Illuminate\Support\Facades\Hash;
+use Storage;
 
 
 class StudentRepository implements StudentRepositoryInterface
@@ -132,7 +133,35 @@ class StudentRepository implements StudentRepositoryInterface
     }
 
     public function upload_attachments($request){
-        
+        foreach($request->file('photos') as $file)
+        {
+            $name = $file->getClientOriginalName();
+            $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
+
+            // insert in image_table
+            $images= new Image();
+            $images->filename=$name;
+            $images->imageable_id = $request->student_id;
+            $images->imageable_type = 'App\Models\Student';
+            $images->save();
+        }
+        toastr()->success('success');
+        return redirect()->route('Students.show',$request->student_id);
+    }
+
+    public function Download_attachment($studentsname, $filename)
+    {
+        return response()->download(public_path('attachments/students/'.$studentsname.'/'.$filename));
+    }
+
+    public function Delete_attachment($request){
+        // Delete img in server disk
+        Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
+
+        // Delete in data
+        Image::where('id',$request->id)->where('filename',$request->filename)->delete();
+        toastr()->success('Delete');
+        return redirect()->route('Students.show',$request->student_id);
     }
 
     public function delete_student($id){

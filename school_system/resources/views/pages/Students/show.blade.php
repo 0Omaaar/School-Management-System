@@ -115,7 +115,7 @@
                                                     <td colspan="2">
                                                         <a class="btn btn-outline-info btn-sm"
                                                             href="{{ url('Download_attachment') }}/{{ $attachment->imageable->name }}/{{ $attachment->filename }}"
-                                                            role="button"><i class="fas fa-download"></i>&nbsp;
+                                                            role="button"><i class="fa fa-download"></i>&nbsp;
                                                             Download</a>
 
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
@@ -126,7 +126,7 @@
 
                                                     </td>
                                                 </tr>
-                                                {{-- @include('pages.Students.Delete_img') --}}
+                                                @include('pages.Students.Delete_img')
                                             @endforeach
                                         </tbody>
                                     </table>

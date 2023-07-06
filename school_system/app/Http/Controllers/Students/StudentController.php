@@ -17,10 +17,12 @@ class StudentController extends Controller
         $this->student = $student;
     }
 
-    public function Get_classrooms($id){
+    public function Get_classrooms($id)
+    {
         return $this->student->Get_classrooms($id);
     }
-    public function Get_sections($id){
+    public function Get_sections($id)
+    {
         return $this->student->Get_sections($id);
     }
 
@@ -69,8 +71,18 @@ class StudentController extends Controller
         return $this->student->update_student($request, $id);
     }
 
-    public function upload_attachments(Request $request){
+    public function upload_attachments(Request $request)
+    {
         return $this->student->upload_attachments($request);
+    }
+
+    public function Download_attachment($studentsname, $filename)
+    {
+        return $this->student->Download_attachment($studentsname, $filename);
+    }
+
+    public function Delete_attachment(Request $request){
+        return $this->student->Delete_attachment($request);
     }
 
     /**
