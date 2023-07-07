@@ -90,7 +90,7 @@
                                 <ul id="Students_upgrade" class="collapse">
                                     <li> <a href="">Add Promotion</a>
                                     </li>
-                                    <li> <a href="">Promotions List</a>
+                                    <li> <a href="{{route('Promotion.index')}}">Promotions List</a>
                                     </li>
                                 </ul>
                             </li>
