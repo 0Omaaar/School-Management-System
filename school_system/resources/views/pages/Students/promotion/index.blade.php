@@ -82,16 +82,16 @@
 
                     <div class="form-row">
                         <div class="form-group col">
-                            <label for="inputState">{{ trans('Students_trans.Grade') }}</label>
+                            <label for="inputState">Grade</label>
                             <select class="custom-select mr-sm-2" name="grade_id_new">
                                 <option selected disabled>Choose...</option>
                                 @foreach ($Grades as $Grade)
-                                    <option value="{{ $Grade->id }}">{{ $Grade->Name }}</option>
+                                    <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col">
-                            <label for="Classroom_id">{{ trans('Students_trans.classrooms') }}: <span
+                            <label for="Classroom_id">classrooms : <span
                                     class="text-danger">*</span></label>
                             <select class="custom-select mr-sm-2" name="classroom_id_new">
 
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group col">
-                            <label for="section_id">:{{ trans('Students_trans.section') }} </label>
+                            <label for="section_id">section : </label>
                             <select class="custom-select mr-sm-2" name="section_id_new">
 
                             </select>
@@ -107,7 +107,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="academic_year">{{ trans('Students_trans.academic_year') }} : <span
+                                <label for="academic_year">academic_year : <span
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="academic_year_new">
                                     <option selected disabled>Choose...</option>

@@ -86,3 +86,58 @@
         });
     });
 </script>
+
+
+<script>
+    $(document).ready(function() {
+        $('select[name="grade_id_new"]').on('change', function() {
+            var Grade_id = $(this).val();
+            if (Grade_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="classroom_id_new"]').empty();
+                        $('select[name="classroom_id_new"]').append(
+                                '<option selected disabled >Choose...</option>'
+                                );
+                        $.each(data, function(key, value) {
+                            $('select[name="classroom_id_new"]').append(
+                                '<option value="' + key + '">' + value +
+                                '</option>');
+                        });
+
+                    },
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('select[name="classroom_id_new"]').on('change', function() {
+            var classroom_id = $(this).val();
+            if (classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_sections') }}/" + classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="section_id_new"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="section_id_new"]').append(
+                                '<option value="' + key + '">' + value +
+                                '</option>');
+                        });
+
+                    },
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>

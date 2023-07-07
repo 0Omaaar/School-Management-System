@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "mcamara/laravel-localization": "^1.8",
+        "usernotnull/tall-toasts": "^1.7",
         "ylamalem/laravel-simple-auth": "dev-main",
         "yoeunes/toastr": "^2.3"
     },
