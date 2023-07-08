@@ -16,6 +16,12 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         return view('pages.Students.promotion.index', compact('Grades'));
     }
 
+    public function create(){
+        $promotions = Promotion::all();
+
+        return view('pages.Students.promotion.management', compact('promotions'));
+    }
+
     public function store($request)
     {
         DB::beginTransaction();

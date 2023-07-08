@@ -31,17 +31,13 @@ class StudentController extends Controller
         return $this->student->Get_students();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return $this->student->create_student();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreStudentsRequest $request)
     {
         return $this->student->store_student($request);
@@ -81,7 +77,8 @@ class StudentController extends Controller
         return $this->student->Download_attachment($studentsname, $filename);
     }
 
-    public function Delete_attachment(Request $request){
+    public function Delete_attachment(Request $request)
+    {
         return $this->student->Delete_attachment($request);
     }
 

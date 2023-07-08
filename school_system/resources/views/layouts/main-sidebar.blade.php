@@ -104,7 +104,7 @@
                                 <ul id="Graduate students" class="collapse">
                                     <li> <a href="">Add Graduate</a>
                                     </li>
-                                    <li> <a href="">Graduate List</a>
+                                    <li> <a href="{{route('Promotion.create')}}">Graduate List</a>
                                     </li>
                                 </ul>
                             </li>
