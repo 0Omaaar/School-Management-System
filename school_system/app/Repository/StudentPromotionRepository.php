@@ -16,7 +16,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         return view('pages.Students.promotion.index', compact('Grades'));
     }
 
-    public function create(){
+    public function create()
+    {
         $promotions = Promotion::all();
 
         return view('pages.Students.promotion.management', compact('promotions'));
@@ -27,7 +28,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         DB::beginTransaction();
 
         try {
-            
+
 
             $students = Student::where('grade_id', $request->grade_id)->where('classroom_id', $request->classroom_id)->where('section_id', $request->section_id)->where('academic_year', $request->academic_year)->get();
 
@@ -64,6 +65,58 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
             DB::commit();
             toastr()->success('success');
             return redirect()->back();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function destroy($request)
+    {
+        DB::beginTransaction();
+
+        try {
+
+            if ($request->page_id == 1) {
+
+                $Promotions = Promotion::all();
+                foreach ($Promotions as $Promotion) {
+
+                    $ids = explode(',', $Promotion->student_id);
+                    Student::whereIn('id', $ids)
+                        ->update([
+                            'grade_id' => $Promotion->from_grade,
+                            'classroom_id' => $Promotion->from_classroom,
+                            'section_id' => $Promotion->from_section,
+                            'academic_year' => $Promotion->academic_year,
+                        ]);
+
+                    Promotion::truncate();
+
+                }
+                DB::commit();
+                toastr()->success('Deleted');
+                return redirect()->back();
+
+            } else {
+
+                $Promotion = Promotion::findorfail($request->id);
+                Student::where('id', $Promotion->student_id)
+                    ->update([
+                        'grade_id' => $Promotion->from_grade,
+                        'classroom_id' => $Promotion->from_classroom,
+                        'section_id' => $Promotion->from_section,
+                        'academic_year' => $Promotion->academic_year,
+                    ]);
+
+
+                Promotion::destroy($request->id);
+                DB::commit();
+                toastr()->success('Deleted');
+                return redirect()->back();
+
+            }
 
         } catch (\Exception $e) {
             DB::rollback();

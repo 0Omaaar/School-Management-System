@@ -68,8 +68,8 @@
                                                         data-toggle="modal" data-target="#">Graduate Student</button>
                                                 </td>
                                             </tr>
-                                            {{-- @include('pages.Students.promotion.Delete_all') --}}
-                                            {{-- @include('pages.Students.promotion.Delete_one') --}}
+                                            @include('pages.Students.promotion.Delete_all')
+                                            @include('pages.Students.promotion.Delete_one')
                                         @endforeach
                                 </table>
                             </div>
