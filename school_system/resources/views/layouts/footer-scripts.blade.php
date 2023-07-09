@@ -6,7 +6,9 @@
 <script>
     var plugin_path = '{{ asset('assets/js') }}/';
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
 <!-- calendar -->
@@ -43,8 +45,8 @@
                     success: function(data) {
                         $('select[name="classroom_id"]').empty();
                         $('select[name="classroom_id"]').append(
-                                '<option selected disabled >Choose...</option>'
-                                );
+                            '<option selected disabled >Choose...</option>'
+                        );
                         $.each(data, function(key, value) {
                             $('select[name="classroom_id"]').append(
                                 '<option value="' + key + '">' + value +
@@ -100,8 +102,8 @@
                     success: function(data) {
                         $('select[name="classroom_id_new"]').empty();
                         $('select[name="classroom_id_new"]').append(
-                                '<option selected disabled >Choose...</option>'
-                                );
+                            '<option selected disabled >Choose...</option>'
+                        );
                         $.each(data, function(key, value) {
                             $('select[name="classroom_id_new"]').append(
                                 '<option value="' + key + '">' + value +

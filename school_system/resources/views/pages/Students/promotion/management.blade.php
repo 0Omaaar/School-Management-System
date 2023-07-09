@@ -63,14 +63,15 @@
 
                                                     <button type="button" class="btn btn-outline-danger mt-2"
                                                         data-toggle="modal"
-                                                        data-target="#Delete_one{{ $promotion->id }}">Retreat Student</button>
-                                                    <button type="button" class="btn btn-outline-success mt-2"
-                                                        data-toggle="modal" data-target="#">Graduate Student</button>
+                                                        data-target="#Delete_one{{ $promotion->id }}">Retreat
+                                                        Student</button>
+                                                    <a href="{{ route('Students.soft', $promotion->student_id) }}"
+                                                        class="btn btn-outline-success mt-2" ">Graduate Student</a>
                                                 </td>
                                             </tr>
                                             @include('pages.Students.promotion.Delete_all')
                                             @include('pages.Students.promotion.Delete_one')
-                                        @endforeach
+ @endforeach
                                 </table>
                             </div>
                         </div>

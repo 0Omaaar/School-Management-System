@@ -59,6 +59,8 @@
                                                             class="fa fa-trash"></i></button>
                                                     <a href="{{route('Students.show', $student->id)}}" class="btn btn-warning btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('Students.soft', $student->id)}}" title="Graduate Student" class="btn btn-dark btn-sm" role="button"
+                                                        aria-pressed="true"><i class="fa fa-graduation-cap"></i></a>
                                                 </td>
                                             </tr>
                                             @include('pages.Students.delete')

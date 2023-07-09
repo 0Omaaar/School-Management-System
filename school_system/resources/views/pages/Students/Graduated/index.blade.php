@@ -8,7 +8,7 @@
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    list_Graduate <i class="fas fa-user-graduate"></i>
+    
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -17,6 +17,9 @@
 <div class="row">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
+            <div class="card-header h-80">
+                List Graduate&nbsp;<i class="fa fa-user"></i>
+            </div>
             <div class="card-body">
                 <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
@@ -50,7 +53,7 @@
                                                     <button type="button" class="btn btn-success btn-sm"
                                                         data-toggle="modal"
                                                         data-target="#Return_Student{{ $student->id }}"
-                                                        title="Delete">Returnt Student</button>
+                                                        title="Delete">Return Student</button>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
                                                         data-target="#Delete_Student{{ $student->id }}"
@@ -58,8 +61,8 @@
 
                                                 </td>
                                             </tr>
-                                            {{-- @include('pages.Students.Graduated.return') --}}
-                                            {{-- @include('pages.Students.Graduated.Delete') --}}
+                                            @include('pages.Students.Graduated.return')
+                                            @include('pages.Students.Graduated.Delete')
                                         @endforeach
                                 </table>
                             </div>

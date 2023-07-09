@@ -123,6 +123,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    
 }
 
 

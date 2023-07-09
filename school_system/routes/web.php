@@ -47,6 +47,7 @@ Route::group(
         Route::post('upload_attachments', [StudentController::class, 'upload_attachments'])->name('upload_attachments');
         Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
         Route::post('Delete_attachment', [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
+        Route::get('/Soft/{id}', [StudentController::class, 'soft'])->name('Students.soft');
 
         Route::resource('Promotion', PromotionController::class);
         Route::resource('Graduated', GraduatedController::class);

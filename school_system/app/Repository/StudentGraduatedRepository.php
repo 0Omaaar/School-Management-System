@@ -30,6 +30,18 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface{
         toastr()->success('Success');
         return redirect()->route('Graduated.index');
     }
+
+    public function ReturnData($request){
+        Student::onlyTrashed()->where('id', $request->id)->first()->restore();
+        toastr()->success('Success');
+        return redirect()->back();
+    }
+
+    public function destroy($request){
+        Student::onlyTrashed()->where('id', $request->id)->first()->forceDelete();
+        toastr()->success('Deleted');
+        return redirect()->back();
+    }
 }
 
 

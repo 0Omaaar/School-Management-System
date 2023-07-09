@@ -175,6 +175,13 @@ class StudentRepository implements StudentRepositoryInterface
         }
     }
 
+    public function soft($id, $request){
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect()->route('Graduated.index');
+    }
+
 }
 
 

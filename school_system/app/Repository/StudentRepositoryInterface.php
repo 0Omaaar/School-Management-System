@@ -17,6 +17,7 @@ interface StudentRepositoryInterface
     public function delete_student($id);
     public function Get_classrooms($id);
     public function Get_sections($id);
+    public function soft($id, $request);
 
 
 }

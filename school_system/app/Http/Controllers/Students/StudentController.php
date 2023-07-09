@@ -82,9 +82,9 @@ class StudentController extends Controller
         return $this->student->Delete_attachment($request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function soft(Request $request, $id){
+        return $this->student->soft($id, $request);
+    }
     public function destroy(string $id)
     {
         return $this->student->delete_student($id);
