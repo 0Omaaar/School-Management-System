@@ -167,7 +167,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function delete_student($id){
         try {
             $student = Student::findOrFail($id);
-            $student->delete();
+            $student->forceDelete();
             toastr()->success('Deleted');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {

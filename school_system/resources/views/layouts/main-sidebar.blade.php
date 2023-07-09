@@ -88,7 +88,7 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Students_upgrade" class="collapse">
-                                    <li> <a href="">Add Promotion</a>
+                                    <li> <a href="{{route('Promotion.create')}}">Add Promotion</a>
                                     </li>
                                     <li> <a href="{{route('Promotion.index')}}">Promotions List</a>
                                     </li>
@@ -102,9 +102,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Graduate students" class="collapse">
-                                    <li> <a href="">Add Graduate</a>
+                                    <li> <a href="{{route('Graduated.create')}}">Add Graduate</a>
                                     </li>
-                                    <li> <a href="{{route('Promotion.create')}}">Graduate List</a>
+                                    <li> <a href="{{route('Graduated.index')}}">Graduate List</a>
                                     </li>
                                 </ul>
                             </li>
