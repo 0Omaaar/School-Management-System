@@ -145,12 +145,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
                             <div class="pull-left"><i class="fa fa-money-bill-wave-alt"></i><span
-                                    class="right-nav-text">Accounts</span></div>
+                                    class="right-nav-text">Counts</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">Scolar fees</a> </li>
+                            <li> <a href="{{route('Fees.index')}}">Scolar fees</a> </li>
                         </ul>
                     </li>
 

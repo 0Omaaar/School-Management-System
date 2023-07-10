@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Classrooms\ClassroomController;
+use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Sections\SectionController;
@@ -51,6 +52,7 @@ Route::group(
 
         Route::resource('Promotion', PromotionController::class);
         Route::resource('Graduated', GraduatedController::class);
+        Route::resource('Fees', FeesController::class);
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
