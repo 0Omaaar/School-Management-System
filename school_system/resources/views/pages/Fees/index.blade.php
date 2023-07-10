@@ -30,7 +30,7 @@
                                         <tr class="alert-success">
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Price</th>
+                                            <th>Amount</th>
                                             <th>Grade</th>
                                             <th>Classroom</th>
                                             <th>Academic Year</th>
@@ -56,11 +56,11 @@
                                                         data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}"
                                                         title="Delete"><i class="fa fa-trash"></i></button>
                                                     <a href="#" class="btn btn-warning btn-sm" role="button"
-                                                        aria-pressed="true"><i class="far fa-eye"></i></a>
+                                                        aria-pressed="true"><i class="fa fa-eye"></i></a>
 
                                                 </td>
                                             </tr>
-                                            {{-- @include('pages.Fees.Delete') --}}
+                                            @include('pages.Fees.Delete')
                                         @endforeach
                                 </table>
                             </div>

@@ -12,7 +12,8 @@ class FeesController extends Controller
 
     protected $fees;
 
-    public function __construct(FeesRepositoryInterface $fees){
+    public function __construct(FeesRepositoryInterface $fees)
+    {
         $this->fees = $fees;
     }
 
@@ -22,7 +23,7 @@ class FeesController extends Controller
         return $this->fees->index();
     }
 
-  
+
     public function create()
     {
         return $this->fees->create();
@@ -42,27 +43,23 @@ class FeesController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        return $this->fees->edit($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(FeesRequest $request, string $id)
     {
-        //
+        return $this->fees->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->fees->destroy($request);
     }
 }
