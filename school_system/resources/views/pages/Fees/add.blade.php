@@ -33,7 +33,6 @@
                     @csrf
                     <div class="form-row">
 
-                        <input type="hidden" name="Fee_type" value="0">
 
                         <div class="form-group col">
                             <label for="inputEmail4">Name</label>
@@ -77,6 +76,14 @@
                                 @for ($year = $current_year; $year <= $current_year + 1; $year++)
                                     <option value="{{ $year }}">{{ $year }}</option>
                                 @endfor
+                            </select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="inputZip">Fee Type</label>
+                            <select class="custom-select mr-sm-2" name="Fee_type">
+                                <option value="1">Scolar Fees</option>
+                                <option value="2">Bus Fees</option>
                             </select>
                         </div>
                     </div>

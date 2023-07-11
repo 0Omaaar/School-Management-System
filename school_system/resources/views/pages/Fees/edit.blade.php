@@ -34,7 +34,6 @@
                     @csrf
                     <div class="form-row">
 
-                        <input type="hidden" value="1" name="Fee_type">
 
                         <div class="form-group col">
                             <label for="inputEmail4">Name</label>

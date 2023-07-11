@@ -151,6 +151,7 @@
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('Fees.index')}}">Scolar fees</a> </li>
+                            <li> <a href="{{route('Fees_Invoices.index')}}">Invoices</a> </li>
                         </ul>
                     </li>
 
