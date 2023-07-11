@@ -80,6 +80,13 @@
                                 @endfor
                             </select>
                         </div>
+                        <div class="form-group col">
+                            <label for="inputZip">Fee Type</label>
+                            <select class="custom-select mr-sm-2" name="Fee_type">
+                                <option value="1" {{$fee->Fee_type == "1" ? 'selected' : ' '}}>Scolar Fees</option>
+                                <option value="2" {{$fee->Fee_type == "2" ? 'selected' : ' '}}>Bus Fees</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group">

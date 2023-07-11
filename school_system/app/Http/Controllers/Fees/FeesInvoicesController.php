@@ -29,13 +29,13 @@ class FeesInvoicesController extends Controller
     
     public function store(Request $request)
     {
-        //
+        return $this->invoices->store($request);
     }
 
     
     public function show(string $id)
     {
-        //
+        return $this->invoices->show($id);
     }
 
     
