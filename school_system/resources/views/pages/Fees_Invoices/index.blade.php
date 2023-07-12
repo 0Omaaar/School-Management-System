@@ -27,13 +27,13 @@
                                     <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>الاسم</th>
-                                            <th>نوع الرسوم</th>
-                                            <th>المبلغ</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>البيان</th>
-                                            <th>العمليات</th>
+                                            <th>Name</th>
+                                            <th>Fee Type</th>
+                                            <th>Amount</th>
+                                            <th>Grade</th>
+                                            <th>Classroom</th>
+                                            <th>Notes</th>
+                                            <th>Processes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,7 +56,7 @@
                                                             class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                            {{-- @include('pages.Fees_Invoices.Delete') --}}
+                                            @include('pages.Fees_Invoices.Delete')
                                         @endforeach
                                 </table>
                             </div>

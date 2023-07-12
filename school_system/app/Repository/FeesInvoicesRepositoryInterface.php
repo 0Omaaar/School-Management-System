@@ -8,5 +8,7 @@ interface FeesInvoicesRepositoryInterface{
     public function show($id);
 
     public function store($request);
+
+    public function destroy($request);
 }
 

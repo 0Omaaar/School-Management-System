@@ -11,48 +11,49 @@ class FeesInvoicesController extends Controller
 
     protected $invoices;
 
-    public function __construct(FeesInvoicesRepositoryInterface $invoices){
+    public function __construct(FeesInvoicesRepositoryInterface $invoices)
+    {
         $this->invoices = $invoices;
     }
-    
+
     public function index()
     {
         return $this->invoices->index();
     }
 
-    
+
     public function create()
     {
         //
     }
 
-    
+
     public function store(Request $request)
     {
         return $this->invoices->store($request);
     }
 
-    
+
     public function show(string $id)
     {
         return $this->invoices->show($id);
     }
 
-    
+
     public function edit(string $id)
     {
         //
     }
 
-    
+
     public function update(Request $request, string $id)
     {
         //
     }
 
-    
-    public function destroy(string $id)
+
+    public function destroy(Request $request)
     {
-        //
+        return $this->invoices->destroy($request);
     }
 }
