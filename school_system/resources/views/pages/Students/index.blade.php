@@ -67,7 +67,7 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('Fees_Invoices.show', $student->id) }}"><i
                                                                     style="color: #0000cc"
-                                                                    class="fa fa-edit"></i>&nbsp;Add Fees
+                                                                    class="fa fa-edit"></i>&nbsp;&nbsp;Add Fees
                                                                 Invoices&nbsp;</a>
                                                             <a class="dropdown-item"
                                                                 href="{{ route('receipt_students.show', $student->id) }}"><i
@@ -77,14 +77,18 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('Students.soft', $student->id) }}"><i
                                                                     style="color: #0000cc"
-                                                                    class="fa fa-graduation-cap"></i>&nbsp;Graduate
+                                                                    class="fa fa-graduation-cap"></i>&nbsp;&nbsp;Graduate
                                                                 Student&nbsp;</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('ProcessingFee.show', $student->id) }}"><i
+                                                                    style="color: red"
+                                                                    class="fa fa-money"></i>&nbsp;&nbsp;Exclude Fee&nbsp;</a>
                                                             <a class="dropdown-item"
                                                                 data-target="#Delete_Student{{ $student->id }}"
                                                                 data-toggle="modal"
                                                                 href="##Delete_Student{{ $student->id }}"><i
                                                                     style="color: red"
-                                                                    class="fa fa-trash"></i>&nbsp;Delete Student</a>
+                                                                    class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;Delete Student</a>
                                                         </div>
                                                     </div>
                                                 </td>
