@@ -154,6 +154,7 @@
                             <li> <a href="{{route('Fees_Invoices.index')}}">Invoices</a> </li>
                             <li> <a href="{{route('receipt_students.index')}}">Receipts Catched</a> </li>
                             <li> <a href="{{route('ProcessingFee.index')}}">Fee excluded</a> </li>
+                            <li> <a href="{{route('Payment_students.index')}}">Payments Back</a> </li>
                         </ul>
                     </li>
 

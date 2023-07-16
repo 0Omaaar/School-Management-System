@@ -56,39 +56,45 @@
                                                             Operations
                                                         </a>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                            <a class="dropdown-item"
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('Students.show', $student->id) }}"><i
                                                                     style="color: #ffc107"
                                                                     class="fa fa-eye "></i>&nbsp;Show Student Infos</a>
-                                                            <a class="dropdown-item"
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('Students.edit', $student->id) }}"><i
                                                                     style="color:green"
                                                                     class="fa fa-edit"></i>&nbsp;Edit Student Infos</a>
-                                                            <a class="dropdown-item"
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('Fees_Invoices.show', $student->id) }}"><i
                                                                     style="color: #0000cc"
                                                                     class="fa fa-edit"></i>&nbsp;&nbsp;Add Fees
-                                                                Invoices&nbsp;</a>
-                                                            <a class="dropdown-item"
+                                                                Invoices</a>
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('receipt_students.show', $student->id) }}"><i
                                                                     style="color: #9dc8e2"
                                                                     class="fa fa-money"></i>&nbsp; &nbsp;Catch
                                                                 Receipt</a>
-                                                            <a class="dropdown-item"
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('Students.soft', $student->id) }}"><i
                                                                     style="color: #0000cc"
                                                                     class="fa fa-graduation-cap"></i>&nbsp;&nbsp;Graduate
-                                                                Student&nbsp;</a>
-                                                            <a class="dropdown-item"
+                                                                Student</a>
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 href="{{ route('ProcessingFee.show', $student->id) }}"><i
                                                                     style="color: red"
-                                                                    class="fa fa-money"></i>&nbsp;&nbsp;Exclude Fee&nbsp;</a>
-                                                            <a class="dropdown-item"
+                                                                    class="fa fa-money"></i>&nbsp;&nbsp;Exclude Fee</a>
+                                                            <a class="dropdown-item" style="font-size: 10px;"
+                                                                href="{{ route('Payment_students.show', $student->id) }}"><i
+                                                                    style="color: green;"
+                                                                    class="fa fa-credit-card"></i>&nbsp;&nbsp;Payment
+                                                                Back</a>
+                                                            <a class="dropdown-item" style="font-size: 10px;"
                                                                 data-target="#Delete_Student{{ $student->id }}"
                                                                 data-toggle="modal"
                                                                 href="##Delete_Student{{ $student->id }}"><i
                                                                     style="color: red"
-                                                                    class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;Delete Student</a>
+                                                                    class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;Delete
+                                                                Student</a>
                                                         </div>
                                                     </div>
                                                 </td>
