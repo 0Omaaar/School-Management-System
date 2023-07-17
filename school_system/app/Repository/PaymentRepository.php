@@ -24,7 +24,8 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function edit($id)
     {
-
+        $payment_student = PaymentStudent::findorfail($id);
+        return view('pages.Payment.edit', compact('payment_student'));
     }
 
     public function store($request)
@@ -82,7 +83,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             $payment_students->save();
 
 
-            $fund_accounts = FundAccount::where('payment_id',$request->id)->first();
+            $fund_accounts = FundAccount::where('payment_id', $request->id)->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->payment_id = $payment_students->id;
             $fund_accounts->debit = 0.00;
@@ -91,7 +92,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             $fund_accounts->save();
 
 
-            $students_accounts = StudentAccount::where('payment_id',$request->id)->first();
+            $students_accounts = StudentAccount::where('payment_id', $request->id)->first();
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'payment';
             $students_accounts->student_id = $request->student_id;

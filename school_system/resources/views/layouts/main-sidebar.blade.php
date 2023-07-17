@@ -162,14 +162,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
                             <div class="pull-left"><i class="fa fa-calendar-alt"></i><span
-                                    class="right-nav-text">Attendace</span></div>
+                                    class="right-nav-text">Presence and Absence</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">font Awesome</a> </li>
-                            <li> <a href="">Themify icons</a> </li>
-                            <li> <a href="">Weather icons</a> </li>
+                            <li> <a href="{{route('Attendance.index')}}">Sections</a> </li>
                         </ul>
                     </li>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Fees\FeesInvoicesController;
@@ -61,6 +62,7 @@ Route::group(
         Route::resource('receipt_students', ReceiptStudentController::class);
         Route::resource('ProcessingFee', ProcessingFeeController::class);
         Route::resource('Payment_students', PaymentController::class);
+        Route::resource('Attendance', AttendanceController::class);
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
