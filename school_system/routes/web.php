@@ -13,6 +13,7 @@ use App\Http\Controllers\Student\ReceiptStudentController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Students\StudentController;
+use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\Teachers\TeacherController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,7 @@ Route::group(
         Route::resource('ProcessingFee', ProcessingFeeController::class);
         Route::resource('Payment_students', PaymentController::class);
         Route::resource('Attendance', AttendanceController::class);
+        Route::resource('subjects', SubjectController::class);
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
