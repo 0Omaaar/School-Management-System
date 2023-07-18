@@ -88,9 +88,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Students_upgrade" class="collapse">
-                                    <li> <a href="{{route('Promotion.index')}}">Add Promotion</a>
+                                    <li> <a href="{{ route('Promotion.index') }}">Add Promotion</a>
                                     </li>
-                                    <li> <a href="{{route('Promotion.create')}}">Promotions List</a>
+                                    <li> <a href="{{ route('Promotion.create') }}">Promotions List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -102,9 +102,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Graduate students" class="collapse">
-                                    <li> <a href="{{route('Graduated.create')}}">Add Graduate</a>
+                                    <li> <a href="{{ route('Graduated.create') }}">Add Graduate</a>
                                     </li>
-                                    <li> <a href="{{route('Graduated.index')}}">Graduate List</a>
+                                    <li> <a href="{{ route('Graduated.index') }}">Graduate List</a>
                                     </li>
                                 </ul>
                             </li>
@@ -150,11 +150,11 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('Fees.index')}}">Scolar fees</a> </li>
-                            <li> <a href="{{route('Fees_Invoices.index')}}">Invoices</a> </li>
-                            <li> <a href="{{route('receipt_students.index')}}">Receipts Catched</a> </li>
-                            <li> <a href="{{route('ProcessingFee.index')}}">Fee excluded</a> </li>
-                            <li> <a href="{{route('Payment_students.index')}}">Payments Back</a> </li>
+                            <li> <a href="{{ route('Fees.index') }}">Scolar fees</a> </li>
+                            <li> <a href="{{ route('Fees_Invoices.index') }}">Invoices</a> </li>
+                            <li> <a href="{{ route('receipt_students.index') }}">Receipts Catched</a> </li>
+                            <li> <a href="{{ route('ProcessingFee.index') }}">Fee excluded</a> </li>
+                            <li> <a href="{{ route('Payment_students.index') }}">Payments Back</a> </li>
                         </ul>
                     </li>
 
@@ -162,12 +162,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
                             <div class="pull-left"><i class="fa fa-calendar-alt"></i><span
-                                    class="right-nav-text">Presence and Absence</span></div>
+                                    class="right-nav-text">Attendace</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('Attendance.index')}}">Sections</a> </li>
+                            <li> <a href="{{ route('Attendance.index') }}">Sections</a> </li>
                         </ul>
                     </li>
 
