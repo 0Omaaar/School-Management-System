@@ -170,6 +170,19 @@
                             <li> <a href="{{ route('Attendance.index') }}">Sections</a> </li>
                         </ul>
                     </li>
+                    {{-- Subjects --}}
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#subject-icon">
+                            <div class="pull-left"><i class="fa fa-calendar-alt"></i><span
+                                    class="right-nav-text">Subjects</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="subject-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('subjects.index') }}">List Subjects</a> </li>
+                            <li> <a href="{{ route('subjects.create') }}">Add Subject</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- Exams-->
                     <li>
