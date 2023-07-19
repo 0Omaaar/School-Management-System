@@ -187,7 +187,7 @@
                     <!-- Exams-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                            <div class="pull-left"><i class="fa fa-book-open"></i><span
+                            <div class="pull-left"><i class="fa fa-book"></i><span
                                     class="right-nav-text">Exams</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -219,7 +219,7 @@
                     <!-- Onlinec lasses-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fa fa-video"></i><span class="right-nav-text">Online
+                            <div class="pull-left"><i class="fa fa-video-camera"></i><span class="right-nav-text">Online
                                     Classes</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
