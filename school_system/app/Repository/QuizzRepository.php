@@ -29,17 +29,15 @@ class QuizzRepository implements QuizzRepositoryInterface
         try {
 
             $quizzes = new Quizze();
-            $quizzes->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
+            $quizzes->name = $request->name;
             $quizzes->subject_id = $request->subject_id;
-            $quizzes->grade_id = $request->Grade_id;
-            $quizzes->classroom_id = $request->Classroom_id;
+            $quizzes->grade_id = $request->grade_id;
+            $quizzes->classroom_id = $request->classroom_id;
             $quizzes->section_id = $request->section_id;
             $quizzes->teacher_id = $request->teacher_id;
             $quizzes->save();
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('Quizzes.create');
-        }
-        catch (\Exception $e) {
+            return redirect()->route('Quizzes.index');
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
@@ -57,14 +55,14 @@ class QuizzRepository implements QuizzRepositoryInterface
     {
         try {
             $quizz = Quizze::findorFail($request->id);
-            $quizz->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
+            $quizz->name = $request->name;
             $quizz->subject_id = $request->subject_id;
-            $quizz->grade_id = $request->Grade_id;
-            $quizz->classroom_id = $request->Classroom_id;
+            $quizz->grade_id = $request->grade_id;
+            $quizz->classroom_id = $request->classroom_id;
             $quizz->section_id = $request->section_id;
             $quizz->teacher_id = $request->teacher_id;
             $quizz->save();
-            toastr()->success(trans('messages.Update'));
+
             return redirect()->route('Quizzes.index');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -75,7 +73,6 @@ class QuizzRepository implements QuizzRepositoryInterface
     {
         try {
             Quizze::destroy($request->id);
-            toastr()->error(trans('messages.Delete'));
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

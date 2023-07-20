@@ -187,8 +187,8 @@
                     <!-- Exams-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                            <div class="pull-left"><i class="fa fa-book"></i><span
-                                    class="right-nav-text">Exams</span></div>
+                            <div class="pull-left"><i class="fa fa-question"></i><span
+                                    class="right-nav-text">Quizzes</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>

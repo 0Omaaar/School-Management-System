@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\QuizzRepositoryInterface;
 use Illuminate\Http\Request;
 
-class QuizzController extends Controller
+class QuizzesController extends Controller
 {
 
     protected $Quizz;
