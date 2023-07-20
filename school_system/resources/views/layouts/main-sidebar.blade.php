@@ -193,8 +193,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">font Awesome</a> </li>
-                            <li> <a href="">Themify icons</a> </li>
+                            <li> <a href="{{route("Quizzes.index")}}">List Quizzes</a> </li>
+                            <li> <a href="{{route("Quizzes.create")}}">Add Quizze</a> </li>
                             <li> <a href="">Weather icons</a> </li>
                         </ul>
                     </li>

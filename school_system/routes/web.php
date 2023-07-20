@@ -6,6 +6,7 @@ use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Fees\FeesInvoicesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Quizzes\QuizzesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Student\PaymentController;
 use App\Http\Controllers\Student\ProcessingFeeController;
@@ -65,6 +66,7 @@ Route::group(
         Route::resource('Payment_students', PaymentController::class);
         Route::resource('Attendance', AttendanceController::class);
         Route::resource('subjects', SubjectController::class);
+        Route::resource('Quizzes', QuizzesController::class);
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
