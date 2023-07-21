@@ -17,7 +17,7 @@ class QuestionRepository implements QuestionRepositoryInterface
     public function create()
     {
         $quizzes = Quizze::get();
-        return view('pages.Questions.create',compact('quizzes'));
+        return view('pages.Questions.create', compact('quizzes'));
     }
 
     public function store($request)
@@ -30,8 +30,8 @@ class QuestionRepository implements QuestionRepositoryInterface
             $question->score = $request->score;
             $question->quizze_id = $request->quizze_id;
             $question->save();
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('questions.create');
+
+            return redirect()->route('questions.index');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -41,7 +41,7 @@ class QuestionRepository implements QuestionRepositoryInterface
     {
         $question = Question::findorfail($id);
         $quizzes = Quizze::get();
-        return view('pages.Questions.edit',compact('question','quizzes'));
+        return view('pages.Questions.edit', compact('question', 'quizzes'));
     }
 
     public function update($request)
@@ -54,7 +54,7 @@ class QuestionRepository implements QuestionRepositoryInterface
             $question->score = $request->score;
             $question->quizze_id = $request->quizze_id;
             $question->save();
-            toastr()->success(trans('messages.Update'));
+
             return redirect()->route('questions.index');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -65,7 +65,7 @@ class QuestionRepository implements QuestionRepositoryInterface
     {
         try {
             Question::destroy($request->id);
-            toastr()->error(trans('messages.Delete'));
+
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
