@@ -225,9 +225,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">font Awesome</a> </li>
-                            <li> <a href="">Themify icons</a> </li>
-                            <li> <a href="">Weather icons</a> </li>
+                            <li> <a href="">Direct Meet</a> </li>
+                            <li> <a href="">Undirect Meet</a> </li>
                         </ul>
                     </li>
 

@@ -20,6 +20,8 @@ use App\Http\Controllers\Teachers\TeacherController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Spatie\GoogleCalendar\Event;
+
 
 include_once 'auth.php';
 
@@ -72,5 +74,22 @@ Route::group(
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
+
+
+        Route::get('/test-google-calendar', function () {
+            // Create a new event in Google Calendar
+            $event = new Event;
+
+            $event->name = 'Test Event 2';
+            $event->startDateTime = now();
+            $event->endDateTime = now()->addHours(1);
+
+            $event->save();
+
+            return 'Event created successfully!';
+            // dd(env('GOOGLE_CALENDAR_ID'));
+    
+        });
+
     }
 );

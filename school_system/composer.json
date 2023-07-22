@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "google/apiclient": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
+        "macsidigital/laravel-zoom": "^7.0",
         "mcamara/laravel-localization": "^1.8",
+        "spatie/laravel-google-calendar": "^3.6",
         "usernotnull/tall-toasts": "^1.7",
         "ylamalem/laravel-simple-auth": "dev-main",
         "yoeunes/toastr": "^2.3"
