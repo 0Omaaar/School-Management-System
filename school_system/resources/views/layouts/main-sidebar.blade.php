@@ -209,9 +209,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">font Awesome</a> </li>
-                            <li> <a href="">Themify icons</a> </li>
-                            <li> <a href="">Weather icons</a> </li>
+                            <li> <a href="">List Of books</a> </li>
                         </ul>
                     </li>
 
@@ -226,7 +224,6 @@
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('online_classes.index')}}">List Of OnlineClasses</a> </li>
-                            {{-- <li> <a href="">Undirect Meet</a> </li> --}}
                         </ul>
                     </li>
 
