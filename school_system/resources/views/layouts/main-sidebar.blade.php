@@ -225,8 +225,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">Direct Meet</a> </li>
-                            <li> <a href="">Undirect Meet</a> </li>
+                            <li> <a href="{{route('online_classes.index')}}">List Of OnlineClasses</a> </li>
+                            {{-- <li> <a href="">Undirect Meet</a> </li> --}}
                         </ul>
                     </li>
 

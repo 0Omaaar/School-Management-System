@@ -6,6 +6,7 @@ use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Fees\FeesInvoicesController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OnlineClass\OnlineClassController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzesController;
 use App\Http\Controllers\Sections\SectionController;
@@ -71,25 +72,26 @@ Route::group(
         Route::resource('subjects', SubjectController::class);
         Route::resource('Quizzes', QuizzesController::class);
         Route::resource('questions', QuestionController::class);
+        Route::resource('online_classes', OnlineClassController::class);
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
 
 
-        Route::get('/test-google-calendar', function () {
-            // Create a new event in Google Calendar
-            $event = new Event;
+        // Route::get('/test-google-calendar', function () {
+        //     // Create a new event in Google Calendar
+        //     $event = new Event;
 
-            $event->name = 'Test Event 2';
-            $event->startDateTime = now();
-            $event->endDateTime = now()->addHours(1);
+        //     $event->name = 'Test Event 2';
+        //     $event->startDateTime = now();
+        //     $event->endDateTime = now()->addHours(1);
 
-            $event->save();
+        //     $event->save();
 
-            return 'Event created successfully!';
-            // dd(env('GOOGLE_CALENDAR_ID'));
+        //     return 'Event created successfully!';
+        //     // dd(env('GOOGLE_CALENDAR_ID'));
     
-        });
+        // });
 
     }
 );
