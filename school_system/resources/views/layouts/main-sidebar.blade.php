@@ -209,7 +209,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">List Of books</a> </li>
+                            <li> <a href="{{route('library.index')}}">List Of books</a> </li>
                         </ul>
                     </li>
 
