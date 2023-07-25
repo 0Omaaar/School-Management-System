@@ -47,16 +47,16 @@
                                                 <td>{{ $book->classroom->name_class }}</td>
                                                 <td>{{ $book->section->name_section }}</td>
                                                 <td>
-                                                    {{-- <a href="{{ route('downloadAttachment', $book->file_name) }}"
-                                                        title="تحميل الكتاب" class="btn btn-warning btn-sm"
+                                                    <a href="{{ route('downloadAttachment', $book->file_name) }}"
+                                                        title="Download Book" class="btn btn-warning btn-sm"
                                                         role="button" aria-pressed="true"><i
-                                                            class="fas fa-download"></i></a> --}}
+                                                            class="fas fa-download"></i></a>
                                                     <a href="{{ route('library.edit', $book->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
-                                                        data-target="#delete_book{{ $book->id }}" title="حذف"><i
+                                                        data-target="#delete_book{{ $book->id }}" title="Delete Book"><i
                                                             class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>

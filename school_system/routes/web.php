@@ -75,6 +75,8 @@ Route::group(
         Route::resource('questions', QuestionController::class);
         Route::resource('online_classes', OnlineClassController::class);
         Route::resource('library', LibraryController::class);
+        Route::get('download_file/{filename}', [LibraryController::class, 'downloadAttachment'])->name('downloadAttachment');
+
 
         Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
         Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
@@ -83,17 +85,17 @@ Route::group(
         // Route::get('/test-google-calendar', function () {
         //     // Create a new event in Google Calendar
         //     $event = new Event;
-
+    
         //     $event->name = 'Test Event 2';
         //     $event->startDateTime = now();
         //     $event->endDateTime = now()->addHours(1);
-
+    
         //     $event->save();
-
+    
         //     return 'Event created successfully!';
         //     // dd(env('GOOGLE_CALENDAR_ID'));
     
         // });
-
+    
     }
 );
