@@ -193,9 +193,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route("Quizzes.index")}}">List Quizzes</a> </li>
-                            <li> <a href="{{route("Quizzes.create")}}">Add Quizze</a> </li>
-                            <li> <a href="{{route("questions.index")}}">Questions</a> </li>
+                            <li> <a href="{{ route('Quizzes.index') }}">List Quizzes</a> </li>
+                            <li> <a href="{{ route('Quizzes.create') }}">Add Quizze</a> </li>
+                            <li> <a href="{{ route('questions.index') }}">Questions</a> </li>
                         </ul>
                     </li>
 
@@ -209,7 +209,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('library.index')}}">List Of books</a> </li>
+                            <li> <a href="{{ route('library.index') }}">List Of books</a> </li>
                         </ul>
                     </li>
 
@@ -217,30 +217,22 @@
                     <!-- Onlinec lasses-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fa fa-video-camera"></i><span class="right-nav-text">Online
+                            <div class="pull-left"><i class="fa fa-video-camera"></i><span
+                                    class="right-nav-text">Online
                                     Classes</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('online_classes.index')}}">List Of OnlineClasses</a> </li>
+                            <li> <a href="{{ route('online_classes.index') }}">List Of OnlineClasses</a> </li>
                         </ul>
                     </li>
 
 
                     <!-- Settings-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fa fa-cogs"></i><span
-                                    class="right-nav-text">Settings</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="">font Awesome</a> </li>
-                            <li> <a href="">Themify icons</a> </li>
-                            <li> <a href="">Weather icons</a> </li>
-                        </ul>
+                        <a href="{{ route('settings.index') }}"><i class="fas fa-cogs"></i><span
+                                class="right-nav-text">Settings</span></a>
                     </li>
 
 

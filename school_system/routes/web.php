@@ -11,6 +11,7 @@ use App\Http\Controllers\OnlineClass\OnlineClassController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzesController;
 use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\Student\PaymentController;
 use App\Http\Controllers\Student\ProcessingFeeController;
 use App\Http\Controllers\Student\ReceiptStudentController;
@@ -75,6 +76,7 @@ Route::group(
         Route::resource('questions', QuestionController::class);
         Route::resource('online_classes', OnlineClassController::class);
         Route::resource('library', LibraryController::class);
+        Route::resource('settings', SettingController::class);
         Route::get('download_file/{filename}', [LibraryController::class, 'downloadAttachment'])->name('downloadAttachment');
 
 
