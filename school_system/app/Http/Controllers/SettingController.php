@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Storage;
 
 class SettingController extends Controller
 {
@@ -26,16 +27,10 @@ class SettingController extends Controller
                 Setting::where('key', $key)->update(['value' => $value]);
             }
 
-            //            $key = array_keys($info);
-//            $value = array_values($info);
-//            for($i =0; $i<count($info);$i++){
-//                Setting::where('key', $key[$i])->update(['value' => $value[$i]]);
-//            }
-
             if ($request->hasFile('logo')) {
                 $logo_name = $request->file('logo')->getClientOriginalName();
                 Setting::where('key', 'logo')->update(['value' => $logo_name]);
-                // $this->uploadFile($request,'logo','logo');
+                Storage::disk('upload_attachments')->delete('attachments/logo/'.$request->old_logo);
                 $request->file('logo')->storeAs('attachments/logo/', $request->file('logo')->getClientOriginalName(), 'upload_attachments');
 
             }

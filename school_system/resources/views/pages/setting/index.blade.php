@@ -110,6 +110,7 @@
                                     </div>
                                     <input name="logo" accept="image/*" type="file" class="file-input"
                                         data-show-caption="false" data-show-upload="false" data-fouc>
+                                    <input type="hidden" name="old_logo" value="{{$setting['logo']}}">
                                 </div>
                             </div>
                         </div>
