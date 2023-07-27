@@ -40,15 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'student' => [
+        'students' => [
             'driver' => 'session',
             'provider' => 'students',
         ],
-        'teacher' => [
+        'teachers' => [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
-        'parent' => [
+        'my_parents' => [
             'driver' => 'session',
             'provider' => 'my_parents',
         ],

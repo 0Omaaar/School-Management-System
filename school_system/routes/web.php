@@ -29,11 +29,11 @@ use Spatie\GoogleCalendar\Event;
 include_once 'auth.php';
 
 
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-});
+// Route::group(['middleware' => ['guest']], function () {
+//     Route::get('/', function () {
+//         return view('auth.login');
+//     });
+// });
 
 
 Route::group(
