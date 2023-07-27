@@ -10,19 +10,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
-    {
-        $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+    public function handle(Request $request, Closure $next)
+    {
+        if (auth('web')->check()) {
+            return redirect(RouteServiceProvider::HOME);
+        }
+        if (auth('students')->check()) {
+            return redirect(RouteServiceProvider::STUDENT);
+        }
+        if (auth('my_parents')->check()) {
+            return redirect(RouteServiceProvider::PARENT);
+        }
+        if (auth('teachers')->check()) {
+            return redirect(RouteServiceProvider::TEACHER);
         }
 
         return $next($request);
