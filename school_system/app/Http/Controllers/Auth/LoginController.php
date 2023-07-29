@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,17 +28,54 @@ class LoginController extends Controller
     public function loginForm($type)
     {
         return view('auth.login', compact('type'));
+        // return "afak";
     }
 
     public function login(Request $request)
     {
 
-        // if (Auth::guard($this->chekGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
-        //     return $this->redirect($request);
-        // } else {
-        //     return redirect()->back()->with('message', 'There is an Error, Please Repeat !');
-        // }
+        if ($request->type == 'student') {
+            $guardName = 'student';
+        } elseif ($request->type == 'parent') {
+            $guardName = 'parent';
+        } elseif ($request->type == 'teacher') {
+            $guardName = 'teacher';
+        } else {
+            $guardName = 'web';
+        }
 
+        if (Auth::guard($guardName)->attempt(['email' => $request->email, 'password' => $request->password])) {
+            if ($request->type == 'student') {
+                // return redirect()->intended(RouteServiceProvider::STUDENT);
+                return "stud";
+            } elseif ($request->type == 'parent') {
+                // return redirect()->intended(RouteServiceProvider::PARENT);
+                return "par";
+            } elseif ($request->type == 'teacher') {
+                // return redirect()->intended(RouteServiceProvider::TEACHER);
+                return "teach";
+            } else {
+                // return redirect()->route('dashboard');
+                return redirect()->action([HomeController::class, 'dashboard']);
+                // return "final";
+            }
+        } else {
+            return redirect()->back()->with('message', 'There is an Error, Please Repeat !');
+        }
+
+
+        // return $guardName;
+    }
+
+    public function logout(Request $request,$type)
+    {
+        Auth::guard($type)->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     public function __construct()

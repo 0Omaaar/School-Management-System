@@ -10,4 +10,14 @@ class HomeController extends Controller
     {
         return view('auth.selection');
     }
+
+
+    public function dashboard()
+    {
+        return view('dashboard');
+        // return "ok";
+    }
+
+
+
 }

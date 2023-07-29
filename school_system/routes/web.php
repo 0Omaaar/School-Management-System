@@ -20,29 +20,42 @@ use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\Teachers\TeacherController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\GoogleCalendar\Event;
 
 
-include_once 'auth.php';
+// include_once 'auth.php';
 
 
-// Route::group(['middleware' => ['guest']], function () {
-//     Route::get('/', function () {
-//         return view('auth.login');
-//     });
-// });
 
 
+//for selection page
+Route::get('/', [HomeController::class, 'index'])->name('selection');
+
+
+//for auth stuff
+Route::group(['namespace' => 'Auth'], function () {
+
+    Route::get('/login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/logout/{type}', [LoginController::class, 'logout'])->name('logout');
+
+
+});
+
+//
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ],
     function () {
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+        Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
 
         Route::resource('Grades', GradeController::class);
 

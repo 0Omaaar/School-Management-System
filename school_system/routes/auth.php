@@ -17,5 +17,5 @@ use App\Http\Controllers\AuthController;
 
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/', [HomeController::class, 'index'])->name('selection');
+Route::get('/', [HomeController::class, 'selection'])->name('selection');
 Route::get('/login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');

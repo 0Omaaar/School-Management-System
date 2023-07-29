@@ -40,15 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'students' => [
+        'student' => [
             'driver' => 'session',
             'provider' => 'students',
         ],
-        'teachers' => [
+
+        'teacher' => [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
-        'my_parents' => [
+
+        'parent' => [
             'driver' => 'session',
             'provider' => 'my_parents',
         ],
@@ -81,13 +83,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Student::class,
         ],
-        'my_parents' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\MyParent::class,
-        ],
+
         'teachers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
+        ],
+
+        'my_parents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\My_Parent::class,
         ],
     ],
 
