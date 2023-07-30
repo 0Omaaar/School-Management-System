@@ -3,10 +3,10 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="{{asset('assets/images/logo-dark.png')}}"
+                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo-dark.png') }}"
                         alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/logo-icon-dark.png')}}"
-                        alt=""></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                        src="{{ asset('assets/images/logo-icon-dark.png') }}" alt=""></a>
             </div>
             <!-- Top bar left -->
             <ul class="nav navbar-nav mr-auto">
@@ -96,7 +96,7 @@
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('assets/images/profile-avatar.jpg')}}" alt="avatar">
+                        <img src="{{ asset('assets/images/profile-avatar.jpg') }}" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
@@ -115,7 +115,19 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                        @if (auth('web')->check())
+                            <a class="dropdown-item" href="{{ route('logout', 'web') }}"><i
+                                    class="text-danger ti-unlock"></i>Logout</a>
+                        @elseif (auth('teacher')->check())
+                            <a class="dropdown-item" href="{{ route('logout', 'teacher') }}"><i
+                                    class="text-danger ti-unlock"></i>Logout</a>
+                        @elseif (auth('student')->check())
+                            <a class="dropdown-item" href="{{ route('logout', 'student') }}"><i
+                                    class="text-danger ti-unlock"></i>Logout</a>
+                        @elseif (auth('parent')->check())
+                            <a class="dropdown-item" href="{{ route('logout', 'parent') }}"><i
+                                    class="text-danger ti-unlock"></i>Logout</a>
+                        @endif
                     </div>
                 </li>
             </ul>

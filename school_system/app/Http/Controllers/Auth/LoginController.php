@@ -46,17 +46,16 @@ class LoginController extends Controller
 
         if (Auth::guard($guardName)->attempt(['email' => $request->email, 'password' => $request->password])) {
             if ($request->type == 'student') {
-                // return redirect()->intended(RouteServiceProvider::STUDENT);
-                return "stud";
+                return redirect()->intended(RouteServiceProvider::STUDENT);
             } elseif ($request->type == 'parent') {
-                // return redirect()->intended(RouteServiceProvider::PARENT);
-                return "par";
+                return redirect()->intended(RouteServiceProvider::PARENT);
             } elseif ($request->type == 'teacher') {
-                // return redirect()->intended(RouteServiceProvider::TEACHER);
-                return "teach";
+                return redirect()->intended(RouteServiceProvider::TEACHER);
             } else {
                 // return redirect()->route('dashboard');
-                return redirect()->action([HomeController::class, 'dashboard']);
+                return redirect()->intended(RouteServiceProvider::HOME);
+
+                // return redirect()->action([HomeController::class, 'dashboard']);
                 // return "final";
             }
         } else {
@@ -64,7 +63,7 @@ class LoginController extends Controller
         }
 
 
-        // return $guardName;
+        // return $request;
     }
 
     public function logout(Request $request,$type)
