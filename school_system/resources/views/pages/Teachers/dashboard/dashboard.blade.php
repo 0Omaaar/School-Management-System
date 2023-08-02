@@ -274,7 +274,7 @@
                                                             <td>{{ $section->invoice_date }}</td>
                                                             <td>{{ $section->student->name }}</td>
                                                             <td>{{ $section->grade->name }}</td>
-                                                            <td>{{ $section->classroom->name }}</td>
+                                                            <td>{{ $section->classroom->name_class }}</td>
                                                             <td>{{ $section->fees->Fee_type }}</td>
                                                             <td>{{ $section->amount }}</td>
                                                             <td class="text-success">{{ $section->created_at }}</td>
