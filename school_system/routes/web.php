@@ -66,7 +66,7 @@ Route::group(
         Route::resource('Sections', SectionController::class);
         Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
 
-        Route::view('/add_parent', 'livewire.show_form');
+        Route::view('/add_parent', 'livewire.show_form')->name('add_parent');
 
         Route::resource('Teachers', TeacherController::class);
 
