@@ -297,7 +297,7 @@
                 </div>
             </div>
 
-            {{-- <livewire:calendar /> --}}
+            <livewire:calendar />
 
             <!--=================================
  wrapper -->
