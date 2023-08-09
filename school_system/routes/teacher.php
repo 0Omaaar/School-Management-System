@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Teachers\dashboard\StudentController;
 
 
 
@@ -27,6 +28,8 @@ Route::group(
 
         return view('pages.Teachers.dashboard.dashboard',$data);
     });
+
+    Route::get('/teacher/dashboard/students', [StudentController::class, 'index'])->name('student.index');
 
 
 });

@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="" target="_blank"><span class="text-danger">Show Informations</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('student.index')}}" target="_blank"><span class="text-danger">Show Informations</span></a>
                             </p>
                         </div>
                     </div>

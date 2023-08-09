@@ -14,7 +14,8 @@
 
         <!-- الاقسام-->
         <li>
-            <a href="{{route('sections')}}"><i class="fas fa-chalkboard"></i><span
+            {{-- {{route('sections')}} --}}
+            <a href=""><i class="fas fa-chalkboard"></i><span
                     class="right-nav-text">Sections</span></a>
         </li>
 
@@ -33,7 +34,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{route('quizzes.index')}}">Quizzes List</a></li>
+                <li><a href="">Quizzes List</a></li>
                 <li><a href="#">Questions</a></li>
             </ul>
 
