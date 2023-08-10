@@ -30,6 +30,9 @@ Route::group(
     });
 
     Route::get('/teacher/dashboard/students', [StudentController::class, 'index'])->name('student.index');
+    Route::get('/teacher/dashboard/sections', [StudentController::class, 'sections'])->name('sections');
+    Route::post('/teacher/dashboard/attendance', [StudentController::class, 'attendance'])->name('attendance');
+    Route::post('/edit_attendance',[StudentController::class, 'editAttendance'])->name('attendance.edit');
 
 
 });

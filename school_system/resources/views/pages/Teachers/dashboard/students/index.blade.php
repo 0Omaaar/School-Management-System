@@ -34,7 +34,7 @@
 @endif
 
 <h5 style="font-family: 'Cairo', sans-serif;color: red">Today : {{ date('Y-m-d') }}</h5>
-<form method="post" action="" autocomplete="off">
+<form method="post" action="{{ route('attendance') }}" autocomplete="off">
 
     @csrf
     <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
@@ -62,27 +62,45 @@
                     <td>{{ $student->classroom->name_class }}</td>
                     <td>{{ $student->section->name_section }}</td>
                     <td>
-                        <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
-                            <input name="attendences[{{ $student->id }}]"
-                                @foreach ($student->attendance()->where('attendence_date', date('Y-m-d'))->get() as $attendance)
+                        @if (isset(
+                                $student->attendance()->where('attendence_date', date('Y-m-d'))->first()->student_id))
+                            <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
+                                <input name="attendences[{{ $student->id }}]"disabled
+                                    @foreach ($student->attendance()->where('attendence_date', date('Y-m-d'))->get() as $attendance)
                                    {{ $attendance->attendence_status == 1 ? 'checked' : '' }} @endforeach
-                                class="leading-tight" type="radio" value="presence">
-                            <span class="text-success">Present</span>
-                        </label>
+                                    class="leading-tight" type="radio" value="presence">
+                                <span class="text-success">Present</span>
+                            </label>
 
-                        <label class="ml-4 block text-gray-500 font-semibold">
-                            <input name="attendences[{{ $student->id }}]"
-                                @foreach ($student->attendance()->where('attendence_date', date('Y-m-d'))->get() as $attendance)
+                            <label class="ml-4 block text-gray-500 font-semibold">
+                                <input name="attendences[{{ $student->id }}]"disabled
+                                    @foreach ($student->attendance()->where('attendence_date', date('Y-m-d'))->get() as $attendance)
                                    {{ $attendance->attendence_status == 0 ? 'checked' : '' }} @endforeach
-                                class="leading-tight" type="radio" value="absent">
-                            <span class="text-danger">Absent</span>
-                        </label>
+                                    class="leading-tight" type="radio" value="absent">
+                                <span class="text-danger">Absent</span>
+                            </label>
+                            <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                data-target="#edit_attendance{{ $student->id }}" title="Edit Attendance"><i
+                                    class="fa fa-edit"></i>
+                            </button>
+                            @include('pages.Teachers.dashboard.students.edit_attendance')
+                        @else
+                            <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
+                                <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
+                                    value="presence">
+                                <span class="text-success">Present</span>
+                            </label>
 
-                        <input type="hidden" name="grade_id" value="{{ $student->grade_id }}">
-                        <input type="hidden" name="classroom_id" value="{{ $student->classroom_id }}">
-                        <input type="hidden" name="section_id" value="{{ $student->section_id }}">
+                            <label class="ml-4 block text-gray-500 font-semibold">
+                                <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
+                                    value="absent">
+                                <span class="text-danger">Absent</span>
+                            </label>
+                        @endif
                     </td>
-
+                    <input type="hidden" name="grade_id" value="{{ $student->grade_id }}">
+                    <input type="hidden" name="classroom_id" value="{{ $student->classroom_id }}">
+                    <input type="hidden" name="section_id" value="{{ $student->section_id }}">
                 </tr>
             @endforeach
         </tbody>

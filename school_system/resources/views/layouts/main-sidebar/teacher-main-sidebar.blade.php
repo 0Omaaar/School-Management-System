@@ -3,8 +3,7 @@
         <!-- menu item Dashboard-->
         <li>
             <a href="{{ url('/teacher/dashboard') }}">
-                <div class="pull-left"><i class="ti-home"></i><span
-                        class="right-nav-text">Dashboard</span>
+                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Dashboard</span>
                 </div>
                 <div class="clearfix"></div>
             </a>
@@ -15,21 +14,21 @@
         <!-- الاقسام-->
         <li>
             {{-- {{route('sections')}} --}}
-            <a href=""><i class="fas fa-chalkboard"></i><span
+            <a href="{{ route('sections') }}"><i class="fas fa-chalkboard"></i><span
                     class="right-nav-text">Sections</span></a>
         </li>
 
         <!-- الطلاب-->
         <li>
-            <a href="{{route('student.index')}}"><i class="fas fa-user-graduate"></i><span
+            <a href="{{ route('student.index') }}"><i class="fas fa-user-graduate"></i><span
                     class="right-nav-text">Students</span></a>
         </li>
 
         <!-- الاختبارات-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
-                <div class="pull-left"><i class="fas fa-chalkboard"></i><span
-                        class="right-nav-text">Quizzes</span></div>
+                <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Quizzes</span>
+                </div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
@@ -44,7 +43,8 @@
         <!-- Online classes-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Onlineclasses</span></div>
+                <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Onlineclasses</span>
+                </div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
@@ -59,8 +59,8 @@
         <!-- sections-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu1">
-                <div class="pull-left"><i class="fas fa-chalkboard"></i><span
-                        class="right-nav-text">Reports</span></div>
+                <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Reports</span>
+                </div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
@@ -75,8 +75,7 @@
         <!-- الملف الشخصي-->
         <li>
             {{-- {{route('profile.show')}} --}}
-            <a href=""><i class="fas fa-id-card-alt"></i><span
-                    class="right-nav-text">Profile</span></a>
+            <a href=""><i class="fas fa-id-card-alt"></i><span class="right-nav-text">Profile</span></a>
         </li>
 
     </ul>
