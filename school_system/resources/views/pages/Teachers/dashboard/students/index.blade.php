@@ -83,7 +83,7 @@
                                 data-target="#edit_attendance{{ $student->id }}" title="Edit Attendance"><i
                                     class="fa fa-edit"></i>
                             </button>
-                            @include('pages.Teachers.dashboard.students.edit_attendance')
+                            {{-- @include('pages.Teachers.dashboard.students.edit_attendance') --}}
                         @else
                             <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
                                 <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
