@@ -66,7 +66,7 @@
             </a>
             <ul id="sections-menu1" class="collapse" data-parent="#sidebarnav">
                 {{-- {{route('attendance.report')}} --}}
-                <li><a href="#">Attendace Report</a></li>
+                <li><a href="{{route('attendance.report')}}">Attendance Report</a></li>
                 <li><a href="#">Exams Report</a></li>
             </ul>
 

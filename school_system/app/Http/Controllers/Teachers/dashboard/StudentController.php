@@ -46,14 +46,15 @@ class StudentController extends Controller
                         'attendence_date' => $attenddate
                     ],
                     [
-                    'student_id' => $studentid,
-                    'grade_id' => $request->grade_id,
-                    'classroom_id' => $request->classroom_id,
-                    'section_id' => $request->section_id,
-                    'teacher_id' => 1,
-                    'attendence_date' => $attenddate,
-                    'attendence_status' => $attendence_status
-                ]);
+                        'student_id' => $studentid,
+                        'grade_id' => $request->grade_id,
+                        'classroom_id' => $request->classroom_id,
+                        'section_id' => $request->section_id,
+                        'teacher_id' => 1,
+                        'attendence_date' => $attenddate,
+                        'attendence_status' => $attendence_status
+                    ]
+                );
             }
             return redirect()->back();
         } catch (\Exception $e) {
@@ -83,6 +84,17 @@ class StudentController extends Controller
 
     }
 
+    public function attendanceReport()
+    {
+        $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $ids)->get();
+        return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
+    }
+
+    public function attendanceSearch(){
+        
+    }
+    
 
     public function store(Request $request)
     {
