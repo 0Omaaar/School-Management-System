@@ -91,10 +91,32 @@ class StudentController extends Controller
         return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
     }
 
-    public function attendanceSearch(){
-        
+    public function attendanceSearch(Request $request)
+    {
+
+        $request->validate([
+            'from' => 'required|date|date_format:Y-m-d',
+            'to' => 'required|date|date_format:Y-m-d|after_or_equal:from'
+        ]);
+
+
+        $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $ids)->get();
+
+        if ($request->student_id == 0) {
+
+            $Students = Attendance::whereBetween('attendence_date', [$request->from, $request->to])->get();
+            return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
+            // return $Students;
+        } else {
+
+            $Students = Attendance::whereBetween('attendence_date', [$request->from, $request->to])
+                ->where('student_id', $request->student_id)->get();
+            return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
+
+
+        }
     }
-    
 
     public function store(Request $request)
     {

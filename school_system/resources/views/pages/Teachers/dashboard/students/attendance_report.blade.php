@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label for="student">Students</label>
                                     <select class="custom-select mr-sm-2" name="student_id">
-                                        <option value="0">Choose...</option>
+                                        <option value="0">All...</option>
                                         @foreach ($students as $student)
                                             <option value="{{ $student->id }}">{{ $student->name }}</option>
                                         @endforeach
@@ -47,10 +47,10 @@
 
                             <div class="card-body datepicker-form">
                                 <div class="input-group" data-date-format="yyyy-mm-dd">
-                                    <input type="text" class="form-control range-from date-picker-default"
+                                    <input type="date" class="form-control "
                                         placeholder="From" required name="from">
                                     <span class="input-group-addon">To</span>
-                                    <input class="form-control range-to date-picker-default" placeholder="To" type="text"
+                                    <input  placeholder="To" type="date" class="form-control"
                                         required name="to">
                                 </div>
                             </div>
@@ -58,34 +58,34 @@
                         </div>
                         <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Submit</button>
                     </form>
-                    {{-- @isset($Students)
+                    @isset($Students)
                         <div class="table-responsive">
                             <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                                 style="text-align: center">
                                 <thead>
                                     <tr>
                                         <th class="alert-success">#</th>
-                                        <th class="alert-success">{{ trans('Students_trans.name') }}</th>
-                                        <th class="alert-success">{{ trans('Students_trans.Grade') }}</th>
-                                        <th class="alert-success">{{ trans('Students_trans.section') }}</th>
-                                        <th class="alert-success">التاريخ</th>
-                                        <th class="alert-warning">الحالة</th>
+                                        <th class="alert-success">Name</th>
+                                        <th class="alert-success">Grade</th>
+                                        <th class="alert-success">Section</th>
+                                        <th class="alert-success">Attendance Date</th>
+                                        <th class="alert-warning">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($Students as $student)
+                                    @foreach ($Students as $x)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $student->students->name }}</td>
-                                            <td>{{ $student->grade->Name }}</td>
-                                            <td>{{ $student->section->Name_Section }}</td>
-                                            <td>{{ $student->attendence_date }}</td>
+                                            <td>{{ $x->students->name }}</td>
+                                            <td>{{ $x->grade->name }}</td>
+                                            <td>{{ $x->section->name_section }}</td>
+                                            <td>{{ $x->attendence_date }}</td>
                                             <td>
 
-                                                @if ($student->attendence_status == 0)
-                                                    <span class="btn-danger">غياب</span>
+                                                @if ($x->attendence_status == 0)
+                                                    <span class="btn-danger p-1" style="border-radius: 10px">Absent</span>
                                                 @else
-                                                    <span class="btn-success">حضور</span>
+                                                    <span class="btn-success p-1" style="border-radius: 10px">Present</span>
                                                 @endif
                                             </td>
                                         </tr>
@@ -93,7 +93,7 @@
                                     @endforeach
                             </table>
                         </div>
-                    @endisset --}}
+                    @endisset
 
                 </div>
             </div>
