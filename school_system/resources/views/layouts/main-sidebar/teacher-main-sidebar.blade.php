@@ -11,20 +11,17 @@
         <!-- menu title -->
         <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Program name </li>
 
-        <!-- الاقسام-->
         <li>
             {{-- {{route('sections')}} --}}
             <a href="{{ route('sections') }}"><i class="fas fa-chalkboard"></i><span
                     class="right-nav-text">Sections</span></a>
         </li>
 
-        <!-- الطلاب-->
         <li>
             <a href="{{ route('student.index') }}"><i class="fas fa-user-graduate"></i><span
                     class="right-nav-text">Students</span></a>
         </li>
 
-        <!-- الاختبارات-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
                 <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Quizzes</span>
@@ -33,7 +30,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="">Quizzes List</a></li>
+                <li><a href="{{route('quizzes.index')}}">Quizzes</a></li>
                 <li><a href="#">Questions</a></li>
             </ul>
 

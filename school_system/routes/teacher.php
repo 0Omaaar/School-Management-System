@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Teachers\dashboard\QuizzController;
+// use App\Http\Controllers\Students\StudentController;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -35,5 +37,9 @@ Route::group(
     Route::post('/edit_attendance',[StudentController::class, 'editAttendance'])->name('attendance.edit');
     Route::get('/teacher/dashboard/attendanceReport', [StudentController::class, 'attendanceReport'])->name('attendance.report');
     Route::post('/teacher/dashboard/attendanceReport', [StudentController::class, 'attendanceSearch'])->name('attendance.search');
+    Route::resource('/teacher/dashboard/quizzes', QuizzController::class);
+
+    Route::get('/Get_classrooms/{id}', [QuizzController::class, 'Get_classrooms']);
+    Route::get('/Get_sections/{id}', [QuizzController::class, 'Get_sections']);
 
 });
