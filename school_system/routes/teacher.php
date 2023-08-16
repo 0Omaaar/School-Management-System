@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teachers\dashboard\QuestionController;
 use App\Http\Controllers\Teachers\dashboard\QuizzController;
 // use App\Http\Controllers\Students\StudentController;
 use App\Models\Student;
@@ -41,5 +42,8 @@ Route::group(
 
     Route::get('/Get_classrooms/{id}', [QuizzController::class, 'Get_classrooms']);
     Route::get('/Get_sections/{id}', [QuizzController::class, 'Get_sections']);
+
+    Route::resource('/teacher/dashboard/questions', QuestionController::class);
+
 
 });

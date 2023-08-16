@@ -21,8 +21,11 @@
                 <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <a href="" class="btn btn-success btn-sm"
-                                role="button" aria-pressed="true">Add New Question</a><br><br>
+                            <div class="mb-4 f-20">
+                                Questions Of : <span class="text-danger">{{ $quizz->name }}</span>
+                            </div>
+                            <a href="{{route('questions.show', $quizz->id)}}" class="btn btn-success btn-sm" role="button" aria-pressed="true">Add New
+                                Question</a><br><br>
                             <div class="table-responsive">
                                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                     data-page-length="50" style="text-align: center">
@@ -47,8 +50,7 @@
                                                 <td>{{ $question->score }}</td>
                                                 <td>{{ $question->quizze->name }}</td>
                                                 <td>
-                                                    <a href=""
-                                                        class="btn btn-info btn-sm" role="button"
+                                                    <a href="" class="btn btn-info btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
@@ -57,7 +59,7 @@
                                                 </td>
                                             </tr>
 
-                                            {{-- @include('pages.Teachers.dashboard.Questions.destroy') --}}
+                                            @include('pages.Teachers.dashboard.Questions.destroy')
                                         @endforeach
                                 </table>
                             </div>
