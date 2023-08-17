@@ -37,7 +37,7 @@ class QuestionController extends Controller
             $question->score = $request->score;
             $question->quizze_id = $request->quizz_id;
             $question->save();
-            
+
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -58,7 +58,8 @@ class QuestionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $question = Question::findorFail($id);
+        return view('pages.Teachers.dashboard.Questions.edit', compact('question'));
     }
 
     /**
@@ -66,7 +67,17 @@ class QuestionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $question = Question::findorfail($id);
+            $question->title = $request->title;
+            $question->answers = $request->answers;
+            $question->right_answer = $request->right_answer;
+            $question->score = $request->score;
+            $question->save();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -74,6 +85,11 @@ class QuestionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Question::destroy($id);
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }
