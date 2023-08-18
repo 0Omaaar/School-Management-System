@@ -40,8 +40,8 @@ Route::group(
     Route::post('/teacher/dashboard/attendanceReport', [StudentController::class, 'attendanceSearch'])->name('attendance.search');
     Route::resource('/teacher/dashboard/quizzes', QuizzController::class);
 
-    Route::get('/Get_classrooms/{id}', [QuizzController::class, 'Get_classrooms']);
-    Route::get('/Get_sections/{id}', [QuizzController::class, 'Get_sections']);
+    // Route::get('/Get_classrooms/{id}', [QuizzController::class, 'Get_classrooms']);
+    // Route::get('/Get_sections/{id}', [QuizzController::class, 'Get_sections']);
 
     Route::resource('/teacher/dashboard/questions', QuestionController::class);
 

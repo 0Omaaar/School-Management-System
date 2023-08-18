@@ -93,8 +93,8 @@ Route::group(
         Route::get('download_file/{filename}', [LibraryController::class, 'downloadAttachment'])->name('downloadAttachment');
 
 
-        Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
-        Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
+        // Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
+        // Route::get('/Get_sections/{id}', [StudentController::class, 'Get_sections']);
 
 
         // Route::get('/test-google-calendar', function () {
