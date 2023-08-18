@@ -50,7 +50,7 @@
                                                 <td>{{ $question->score }}</td>
                                                 <td>{{ $question->quizze->name }}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-info btn-sm" role="button"
+                                                    <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"

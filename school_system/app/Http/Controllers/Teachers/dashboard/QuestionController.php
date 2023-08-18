@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teachers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Question;
+use App\Models\Quizze;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -38,7 +39,7 @@ class QuestionController extends Controller
             $question->quizze_id = $request->quizz_id;
             $question->save();
 
-            return redirect()->back();
+            return redirect()->route('quizzes.show', $request->quizz_id);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -59,7 +60,9 @@ class QuestionController extends Controller
     public function edit(string $id)
     {
         $question = Question::findorFail($id);
+        
         return view('pages.Teachers.dashboard.Questions.edit', compact('question'));
+        // return $quizz;
     }
 
     /**
@@ -74,7 +77,7 @@ class QuestionController extends Controller
             $question->right_answer = $request->right_answer;
             $question->score = $request->score;
             $question->save();
-            return redirect()->back();
+            return redirect()->back(k);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
