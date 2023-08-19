@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teachers\dashboard\OnlineClassController;
 use App\Http\Controllers\Teachers\dashboard\QuestionController;
 use App\Http\Controllers\Teachers\dashboard\QuizzController;
 // use App\Http\Controllers\Students\StudentController;
@@ -43,7 +44,9 @@ Route::group(
     // Route::get('/Get_classrooms/{id}', [QuizzController::class, 'Get_classrooms']);
     // Route::get('/Get_sections/{id}', [QuizzController::class, 'Get_sections']);
 
-    Route::resource('/teacher/dashboard/questions', QuestionController::class);
+    Route::resource('/teacher/dashboard/questionss', QuestionController::class);
+    Route::resource('/teacher/dashboard/teacher_online_classes', OnlineClassController::class);
+    // Route::post('/teacher/dashboard/teacher_online_classes/delete/{}', [OnlineClassController::class, 'delete'])->name('teacher_online_classes.delete');
 
 
 });

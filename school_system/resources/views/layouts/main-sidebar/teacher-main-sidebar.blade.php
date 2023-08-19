@@ -39,16 +39,8 @@
 
         <!-- Online classes-->
         <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Onlineclasses</span>
-                </div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="#">حصص اونلاين مع زوم</a> </li>
-                {{-- {{route('online_zoom_classes.index')}} --}}
-            </ul>
+            <a href="{{route('teacher_online_classes.index')}}"><i class="fas fa-user-graduate"></i><span
+                    class="right-nav-text">Online Classes</span></a>
         </li>
 
 
