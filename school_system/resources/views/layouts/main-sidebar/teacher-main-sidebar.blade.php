@@ -64,7 +64,7 @@
         <!-- الملف الشخصي-->
         <li>
             {{-- {{route('profile.show')}} --}}
-            <a href=""><i class="fas fa-id-card-alt"></i><span class="right-nav-text">Profile</span></a>
+            <a href="{{route('profile.show')}}"><i class="fas fa-id-card-alt"></i><span class="right-nav-text">Profile</span></a>
         </li>
 
     </ul>
