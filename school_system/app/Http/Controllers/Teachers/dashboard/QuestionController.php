@@ -77,7 +77,7 @@ class QuestionController extends Controller
             $question->right_answer = $request->right_answer;
             $question->score = $request->score;
             $question->save();
-            return redirect()->back(k);
+            return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }

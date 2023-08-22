@@ -15,7 +15,7 @@
         <!-- الامتحانات-->
         <li>
             {{-- {{route('student_exams.index')}} --}}
-            <a href="#"><i class="fas fa-book-open"></i><span class="right-nav-text">Exams</span></a>
+            <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span class="right-nav-text">Exams</span></a>
         </li>
 
 
