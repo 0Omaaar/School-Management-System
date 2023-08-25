@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Degree;
 use App\Models\Question;
 use Livewire\Component;
 
@@ -18,6 +19,48 @@ class ShowQuestion extends Component
 
     }
 
+    public function nextQuestion($question_id, $score, $answer, $right_answer)
+    {
+        $stuDegree = Degree::where('student_id', $this->student_id)
+            ->where('quizze_id', $this->quizze_id)
+            ->first();
 
+        if ($stuDegree == null) {
+            $degree = new Degree();
+            $degree->quizze_id = $this->quizze_id;
+            $degree->student_id = $this->student_id;
+            $degree->question_id = $question_id;
+            if (strcmp(trim($answer), trim($right_answer)) === 0) {
+                $degree->score += $score;
+            } else {
+                $degree->score += 0;
+            }
+            $degree->date = date('Y-m-d');
+            $degree->save();
+        } else {
+            // if ($stuDegree->question_id >= $this->data[$this->counter]->id) {
+            //     $stuDegree->score = 0;
+            //     $stuDegree->abuse = '1';
+            //     $stuDegree->save();
+            //     return redirect('student_exams');
+            // } else {
+
+                $stuDegree->question_id = $question_id;
+                if (strcmp(trim($answer), trim($right_answer)) === 0) {
+                    $stuDegree->score += $score;
+                } else {
+                    $stuDegree->score += 0;
+                }
+                $stuDegree->save();
+
+            // }
+        }
+
+        if ($this->counter < $this->questioncount - 1) {
+            $this->counter++;
+        } else {
+            return redirect()->route('student_exams.index');
+        }
+    }
 
 }
