@@ -39,10 +39,14 @@
                                                 <td>{{ $quizze->subject->name }}</td>
                                                 <td>{{ $quizze->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('student_exams.show', $quizze->id) }}"
-                                                        class="btn btn-outline-success btn-sm" role="button"
-                                                        aria-pressed="true" onclick="alertAbuse()">
-                                                        <i class="fas fa-person-booth"></i></a>
+                                                    @if ($quizze->degree->count() > 0 && $quizze->id == $quizze->degree[0]->quizze_id)
+                                                        <b>{{ $quizze->degree[0]->score }}</b>
+                                                    @else
+                                                        <a href="{{ route('student_exams.show', $quizze->id) }}"
+                                                            class="btn btn-outline-success btn-sm" role="button"
+                                                            aria-pressed="true" onclick="alertAbuse()">
+                                                            <i class="fas fa-person-booth"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -60,4 +64,9 @@
 @section('js')
 {{-- @toastr_js --}}
 {{-- @toastr_render --}}
+<script>
+    function alertAbuse() {
+        alert("Please Don't Refresh The Page During The Test, The System Will Cancel Your Test !");
+    }
+</script>
 @endsection
