@@ -38,23 +38,23 @@ class ShowQuestion extends Component
             $degree->date = date('Y-m-d');
             $degree->save();
         } else {
-            if ($stuDegree->question_id >= $this->data[$this->counter]->id) {
-                $stuDegree->score = 0;
-                $stuDegree->abuse = '1';
-                $stuDegree->save();
-                return redirect('student_exams');
+            // if ($stuDegree->question_id >= $this->data[$this->counter]->id) {
+            //     $stuDegree->score = 0;
+            //     $stuDegree->abuse = '1';
+            //     $stuDegree->save();
+            //     return redirect()->route('student_exams.index');
+            // } else {
+
+            $stuDegree->question_id = $question_id;
+            if (strcmp(trim($answer), trim($right_answer)) === 0) {
+                $stuDegree->score += $score;
             } else {
-
-                $stuDegree->question_id = $question_id;
-                if (strcmp(trim($answer), trim($right_answer)) === 0) {
-                    $stuDegree->score += $score;
-                } else {
-                    $stuDegree->score += 0;
-                }
-                $stuDegree->save();
-
-                // }
+                $stuDegree->score += 0;
             }
+            $stuDegree->save();
+
+            // }
+            // }
 
             if ($this->counter < $this->questioncount - 1) {
                 $this->counter++;

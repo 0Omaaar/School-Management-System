@@ -13,4 +13,8 @@ class Question extends Model
     {
         return $this->belongsTo('App\Models\Quizze');
     }
+
+    public function degrees(){
+        return $this->hasMany(Degree::class);
+    }
 }

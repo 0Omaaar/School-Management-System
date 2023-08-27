@@ -2,13 +2,13 @@
 @section('css')
     {{-- @toastr_css --}}
 @section('title')
-    Quizzes
+    Student's List Who Passed An Exam
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    Quizzes
+    Student's List Who Passed An Exam
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -21,77 +21,72 @@
                 <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <a href="{{ route('quizzes.create') }}" class="btn btn-success btn-sm" role="button"
-                                aria-pressed="true">Add New Quizz</a><br><br>
                             <div class="table-responsive">
                                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                     data-page-length="50" style="text-align: center">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Teacher</th>
-                                            <th>Grade</th>
-                                            <th>Classroom</th>
-                                            <th>Section</th>
+                                            <th>Student's Name</th>
+                                            <th>Last Question</th>
+                                            <th>Score</th>
+                                            <th>Cheat</th>
+                                            <th>Date</th>
                                             <th>Processes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($quizzes as $quizze)
+                                        @foreach ($degrees as $degree)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $quizze->name }}</td>
-                                                <td>{{ $quizze->teacher->name }}</td>
-                                                <td>{{ $quizze->grade->name }}</td>
-                                                <td>{{ $quizze->classroom->name_class }}</td>
-                                                <td>{{ $quizze->section->name_section }}</td>
+                                                <td>{{ $degree->student->name }}</td>
+                                                <td>{{ $degree->question->title }}</td>
+                                                <td>{{ $degree->score }}</td>
+                                                @if ($degree->abuse == 0)
+                                                    <td style="color: green">-</td>
+                                                @else
+                                                    <td style="color: red">-</td>
+                                                @endif
+                                                <td>{{ $degree->date }}</td>
                                                 <td>
-                                                    <a href="{{ route('quizzes.edit', $quizze->id) }}"
-                                                        class="btn btn-info btn-sm" role="button"
-                                                        aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                    <button type="button" class="btn btn-info btn-sm"
                                                         data-toggle="modal"
-                                                        data-target="#delete_exam{{ $quizze->id }}" title="Delete"><i
-                                                            class="fa fa-trash"></i></button>
-                                                    <a href="{{ route('quizzes.show', $quizze->id) }}"
-                                                        class="btn btn-warning btn-sm" title="Show" role="button"
-                                                        aria-pressed="true"><i class="fa fa-binoculars"></i></a>
-                                                    <a href="{{ route('student.quizze', $quizze->id) }}"
-                                                        class="btn btn-primary btn-sm" title="Show Students Passed Test"
-                                                        role="button" aria-pressed="true"><i
-                                                            class="fa fa-street-view"></i></a>
+                                                        data-target="#repeat_quizze{{ $degree->quizze_id }}"
+                                                        title="Repeat">
+                                                        <i class="fas fa-repeat"></i></button>
                                                 </td>
                                             </tr>
 
-                                            <div class="modal fade" id="delete_exam{{ $quizze->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="repeat_quizze{{ $degree->quizze_id }}"
+                                                tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
-                                                    <form action="{{ route('quizzes.destroy', $quizze->id) }}"
+                                                    <form action="{{route('repeat.quizze')}}"
                                                         method="post">
-                                                        {{ method_field('delete') }}
+                                                        {{ method_field('post') }}
                                                         {{ csrf_field() }}
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                    class="modal-title" id="exampleModalLabel">Delete
-                                                                    Quizz</h5>
+                                                                    class="modal-title" id="exampleModalLabel">Repeat Exam For </h5>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ $quizze->name }}</p>
-                                                                <input type="hidden" name="id"
-                                                                    value="{{ $quizze->id }}">
+                                                                <h6>{{ $degree->student->name }}</h6>
+                                                                <input type="hidden" name="student_id"
+                                                                    value="{{ $degree->student_id }}">
+                                                                <input type="hidden" name="quizze_id"
+                                                                    value="{{ $degree->quizze_id }}">
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
                                                                     <button type="submit"
-                                                                        class="btn btn-danger">submit</button>
+                                                                        class="btn btn-info">Submit</button>
                                                                 </div>
                                                             </div>
                                                         </div>
