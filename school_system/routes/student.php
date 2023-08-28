@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Students\dashboard\ExamsController;
+use App\Http\Controllers\Students\dashboard\ProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::group(
     });
 
     Route::resource('/student/dashboard/student_exams', ExamsController::class);
-
+    Route::resource('/student/dashboard/profile-student', ProfileController::class);
     // Route::get('/student/dashboard', [StudentController::class, 'dashboard']);
 
 });

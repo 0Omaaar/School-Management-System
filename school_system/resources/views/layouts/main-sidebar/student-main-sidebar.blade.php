@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav side-menu" id="sidebarnav">
         <!-- menu item Dashboard-->
         <li>
-            <a href="{{ url('/dashboard') }}">
+            <a href="{{ url('/student/dashboard') }}">
                 <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Dashboard </span>
                 </div>
                 <div class="clearfix"></div>
@@ -22,7 +22,7 @@
         <!-- Settings-->
         <li>
             {{-- {{route('settings.index')}} --}}
-            <a href="#"><i class="fas fa-id-card-alt"></i><span class="right-nav-text">Settings</span></a>
+            <a href="{{route('profile-student.index')}}"><i class="fas fa-id-card-alt"></i><span class="right-nav-text">Profile</span></a>
         </li>
 
     </ul>
