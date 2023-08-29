@@ -49,6 +49,7 @@ class LoginController extends Controller
                 return redirect()->intended(RouteServiceProvider::STUDENT);
             } elseif ($request->type == 'parent') {
                 return redirect()->intended(RouteServiceProvider::PARENT);
+                // return "aloo";
             } elseif ($request->type == 'teacher') {
                 return redirect()->intended(RouteServiceProvider::TEACHER);
             } else {
@@ -62,7 +63,7 @@ class LoginController extends Controller
             return redirect()->back()->with('message', 'There is an Error, Please Repeat !');
         }
 
-
+            // return Auth::guard($guardName);
         // return $request;
     }
 

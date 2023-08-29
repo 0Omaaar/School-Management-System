@@ -26,6 +26,7 @@ class RedirectIfAuthenticated
 
         if (auth('parent')->check()) {
             return redirect(RouteServiceProvider::PARENT);
+            // return "ok";
         }
 
         return $next($request);

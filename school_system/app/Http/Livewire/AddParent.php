@@ -150,6 +150,7 @@ class AddParent extends Component
             $parent->update([
                 'passport_id_father' => $this->passport_id_father,
                 'email' => $this->email,
+                'password' => Hash::make($this->password),
                 'name_father' => $this->name_father,
                 'phone_father' => $this->phone_father,
                 'job_father' => $this->job_father,
