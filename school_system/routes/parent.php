@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Parents\dashboard\ChildrenController;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -27,6 +28,8 @@ Route::group(
         $sons = Student::where('parent_id',auth()->user()->id)->get();
         return view('pages.parents.dashboard',compact('sons'));
     })->name('dashboard.parents');
+
+    Route::get('/parent/dashboard/sons', [ChildrenController::class, 'index'])->name('sons.index');
 
     // Route::group(['namespace' => 'Parents\dashboard'], function () {
     //     Route::get('children', 'ChildrenController@index')->name('sons.index');
