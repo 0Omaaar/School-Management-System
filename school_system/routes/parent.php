@@ -30,10 +30,8 @@ Route::group(
     })->name('dashboard.parents');
 
     Route::get('/parent/dashboard/sons', [ChildrenController::class, 'index'])->name('sons.index');
+    Route::get('/parent/dashboard/son/{id}/degrees', [ChildrenController::class, 'results'])->name('sons.results');
 
-    // Route::group(['namespace' => 'Parents\dashboard'], function () {
-    //     Route::get('children', 'ChildrenController@index')->name('sons.index');
-    //     Route::get('results/{id}', 'ChildrenController@results')->name('sons.results');
-    // });
+    
 
 });

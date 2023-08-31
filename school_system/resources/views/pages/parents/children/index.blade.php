@@ -55,7 +55,7 @@
                                                         </a>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <a class="dropdown-item"
-                                                                href=""><i
+                                                                href="{{route('sons.results', $student->id)}}"><i
                                                                     style="color: #ffc107"
                                                                     class="far fa-eye "></i>&nbsp;Show Tests Results</a>
                                                         </div>
