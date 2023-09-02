@@ -33,6 +33,13 @@ class ChildrenController extends Controller
         return view('pages.parents.degrees.index', compact('degrees'));
 
     }
+
+    public function attendances()
+    {
+        $students = Student::where('parent_id', auth()->user()->id)->get();
+        return view('pages.parents.Attendance.index', compact('students'));
+    }
+
     public function create()
     {
         //
