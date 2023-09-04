@@ -29,7 +29,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="#" autocomplete="off">
+                    <form method="post" action="{{route('sons.attendances.search')}}" autocomplete="off">
                         @csrf
                         <h6 style="font-family: 'Cairo', sans-serif;color: blue">Search Infos</h6><br>
                         <div class="row">
@@ -47,11 +47,11 @@
 
                             <div class="card-body datepicker-form">
                                 <div class="input-group" data-date-format="yyyy-mm-dd">
-                                    <input type="text" class="form-control range-from date-picker-default"
+                                    <input type="date" class="form-control "
                                         placeholder="From" required name="from">
                                     <span class="input-group-addon">To</span>
-                                    <input class="form-control range-to date-picker-default" placeholder="To"
-                                        type="text" required name="to">
+                                    <input  placeholder="To" type="date" class="form-control"
+                                        required name="to">
                                 </div>
                             </div>
 
@@ -74,23 +74,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($Students as $student)
+                                    @foreach ($Students as $x)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $student->students->name }}</td>
-                                            <td>{{ $student->grade->name }}</td>
-                                            <td>{{ $student->section->name_section }}</td>
-                                            <td>{{ $student->attendence_date }}</td>
+                                            <td>{{ $x->students->name }}</td>
+                                            <td>{{ $x->grade->name }}</td>
+                                            <td>{{ $x->section->name_section }}</td>
+                                            <td>{{ $x->attendence_date }}</td>
                                             <td>
 
-                                                @if ($student->attendence_status == 0)
-                                                    <span class="btn-danger">Absent</span>
+                                                @if ($x->attendence_status == 0)
+                                                    <span class="btn-danger p-1" style="border-radius: 10px">Absent</span>
                                                 @else
-                                                    <span class="btn-success">Present</span>
+                                                    <span class="btn-success p-1" style="border-radius: 10px">Present</span>
                                                 @endif
                                             </td>
                                         </tr>
-                                        @include('pages.Students.Delete')
+                                        {{-- @include('pages.Students.Delete') --}}
                                     @endforeach
                             </table>
                         </div>

@@ -21,7 +21,7 @@
 
         <!-- تقرير الحضور والغياب-->
         <li>
-            <a href=""><i class="fas fa-book-open"></i><span
+            <a href="{{route('sons.attendances')}}"><i class="fas fa-book-open"></i><span
                     class="right-nav-text">Attendance Repport</span></a>
         </li>
 
