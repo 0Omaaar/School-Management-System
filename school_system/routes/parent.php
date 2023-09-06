@@ -33,6 +33,7 @@ Route::group(
     Route::get('/parent/dashboard/son/{id}/degrees', [ChildrenController::class, 'results'])->name('sons.results');
     Route::get('/parent/dashboard/sons/attendances', [ChildrenController::class, 'attendances'])->name('sons.attendances');
     Route::post('/parent/dashboard/sons/attendanceSearch', [ChildrenController::class, 'attendanceSearch'])->name('sons.attendances.search');
+    Route::get('/parent/dashboard/sons/fees', [ChildrenController::class, 'fees'])->name('sons.fees');
 
     
 

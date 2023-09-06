@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Parents\dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use App\Models\Degree;
+use App\Models\FeeInvoice;
 use App\Models\MyParent;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -67,6 +68,12 @@ class ChildrenController extends Controller
 
         }
 
+    }
+
+    public function fees(){
+        $students_ids = Student::where('parent_id', auth()->user()->id)->pluck('id');
+        $Fee_invoices = FeeInvoice::whereIn('student_id',$students_ids)->get();
+        return view('pages.parents.fees.index', compact('Fee_invoices'));
     }
 
     public function create()
