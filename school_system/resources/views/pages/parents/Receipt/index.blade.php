@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('css')
-    {{-- @toastr_css --}}
+    @toastr_css
 @section('title')
-    Scolar Fees
+    Receipt Catch
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    Scolar Fees
+    Receipt Catch
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -28,29 +28,17 @@
                                         <tr class="alert-success">
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Fee's Type</th>
                                             <th>Amount</th>
-                                            <th>Grade</th>
-                                            <th>Classroom</th>
                                             <th>Description</th>
-                                            <th>Processes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Fee_invoices as $Fee_invoice)
+                                        @foreach ($receipt_students as $receipt_student)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $Fee_invoice->student->name }}</td>
-                                                <td>{{ $Fee_invoice->fees->title }}</td>
-                                                <td>{{ number_format($Fee_invoice->amount, 2) }}</td>
-                                                <td>{{ $Fee_invoice->grade->name }}</td>
-                                                <td>{{ $Fee_invoice->classroom->name_class }}</td>
-                                                <td>{{ $Fee_invoice->description }}</td>
-                                                <td>
-                                                    <a href="{{ route('sons.receipt', $Fee_invoice->student_id) }}"
-                                                        title="Receipt" class="btn btn-info btn-sm" role="button"
-                                                        aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                </td>
+                                                <td>{{ $receipt_student->student->name }}</td>
+                                                <td>{{ number_format($receipt_student->debit, 2) }}</td>
+                                                <td>{{ $receipt_student->description }}</td>
                                             </tr>
                                         @endforeach
                                 </table>
@@ -65,6 +53,6 @@
 <!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+{{-- @toastr_js --}}
+{{-- @toastr_render --}}
 @endsection

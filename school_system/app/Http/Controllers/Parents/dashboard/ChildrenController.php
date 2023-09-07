@@ -7,6 +7,7 @@ use App\Models\Attendance;
 use App\Models\Degree;
 use App\Models\FeeInvoice;
 use App\Models\MyParent;
+use App\Models\ReceiptStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use DB;
@@ -70,11 +71,30 @@ class ChildrenController extends Controller
 
     }
 
-    public function fees(){
+    public function fees()
+    {
         $students_ids = Student::where('parent_id', auth()->user()->id)->pluck('id');
-        $Fee_invoices = FeeInvoice::whereIn('student_id',$students_ids)->get();
+        $Fee_invoices = FeeInvoice::whereIn('student_id', $students_ids)->get();
         return view('pages.parents.fees.index', compact('Fee_invoices'));
     }
+
+    public function receiptStudent($id)
+    {
+
+        $student = Student::findorFail($id);
+        if ($student->parent_id !== auth()->user()->id) {
+            return redirect()->route('sons.fees');
+        }
+
+        $receipt_students = ReceiptStudent::where('student_id', $id)->get();
+
+        if ($receipt_students->isEmpty()) {
+            return redirect()->route('sons.fees');
+        }
+        return view('pages.parents.Receipt.index', compact('receipt_students'));
+
+    }
+
 
     public function create()
     {
