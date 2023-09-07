@@ -11,6 +11,7 @@ use App\Models\ReceiptStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class ChildrenController extends Controller
 {
@@ -95,6 +96,29 @@ class ChildrenController extends Controller
 
     }
 
+    public function profile()
+    {
+        $information = MyParent::findorFail(auth()->user()->id);
+        return view('pages.parents.profile', compact('information'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $information = MyParent::findorFail($id);
+
+        if (!empty($request->password)) {
+            $information->name_father = $request->name;
+            $information->password = Hash::make($request->password);
+            $information->save();
+        } else {
+            $information->name_father = $request->name;
+            $information->save();
+        }
+
+        return redirect()->back();
+
+    }
 
     public function create()
     {
@@ -118,13 +142,6 @@ class ChildrenController extends Controller
     {
         //
     }
-
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
 
     public function destroy(string $id)
     {
