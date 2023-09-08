@@ -59,7 +59,7 @@ class SectionController extends Controller
 
             $section->teachers()->attach($request->teacher_id);
 
-            toastr()->success('Section added successfully !');
+            // toastr()->success('Section added successfully !');
 
             return redirect()->back();
         } catch (\Exception $e) {
@@ -108,7 +108,7 @@ class SectionController extends Controller
                 $section->status = $status,
 
             ]);
-            toastr()->success("Section Updated !");
+            // toastr()->success("Section Updated !");
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -122,7 +122,7 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id)->delete();
 
-        toastr()->success("Section deleted !");
+        // toastr()->success("Section deleted !");
         return redirect()->back();
     }
 }

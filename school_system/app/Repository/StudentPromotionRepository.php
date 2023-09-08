@@ -63,7 +63,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
             }
             DB::commit();
-            toastr()->success('success');
+            // toastr()->success('success');
             return redirect()->back();
 
         } catch (\Exception $e) {
@@ -96,7 +96,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
                 }
                 DB::commit();
-                toastr()->success('Deleted');
+                // toastr()->success('Deleted');
                 return redirect()->back();
 
             } else {
@@ -113,7 +113,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
                 Promotion::destroy($request->id);
                 DB::commit();
-                toastr()->success('Deleted');
+                // toastr()->success('Deleted');
                 return redirect()->back();
 
             }

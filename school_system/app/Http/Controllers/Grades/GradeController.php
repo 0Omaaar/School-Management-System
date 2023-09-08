@@ -43,7 +43,7 @@ class GradeController extends Controller
 
             $grade->save();
 
-            toastr()->success('Grade added successfully !');
+            // toastr()->success('Grade added successfully !');
 
             return redirect()->route('Grades.index');
         } catch (\Exception $e) {
@@ -79,7 +79,7 @@ class GradeController extends Controller
                 $grade->name = $validated['name'],
                 $grade->notes = $request->notes,
             ]);
-            toastr()->success("Grade Updated !");
+            // toastr()->success("Grade Updated !");
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -95,12 +95,12 @@ class GradeController extends Controller
             $grade = Grade::findOrFail($id);
 
             if($grade->classrooms->count() != 0){
-                toastr()->error("This Grade had already some classerooms, Please delete them first !");
+                // toastr()->error("This Grade had already some classerooms, Please delete them first !");
                 return redirect()->back();
             }
             else{
                 $grade->delete();
-                toastr()->success("Grade Deleted !");
+                // toastr()->success("Grade Deleted !");
                 return redirect()->back();
             }
         } catch (\Exception $e) {

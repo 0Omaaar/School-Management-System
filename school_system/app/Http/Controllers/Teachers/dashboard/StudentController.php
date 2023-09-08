@@ -76,7 +76,7 @@ class StudentController extends Controller
             $student_id->update([
                 'attendence_status' => $attendence_status
             ]);
-            toastr()->success(trans('messages.success'));
+            // toastr()->success(trans('messages.success'));
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

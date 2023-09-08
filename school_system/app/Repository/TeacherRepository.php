@@ -37,7 +37,7 @@ class TeacherRepository implements TeacherRepositoryInterface
             $teachers->joining_date = $request->joining_date;
             $teachers->address = $request->address;
             $teachers->save();
-            toastr()->success('Success');
+            // toastr()->success('Success');
             return redirect()->route('Teachers.index');
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -65,7 +65,7 @@ class TeacherRepository implements TeacherRepositoryInterface
             $teacher->joining_date = $request->joining_date;
             $teacher->address = $request->address;
             $teacher->save();
-            toastr()->success('Update');
+            // toastr()->success('Update');
             return redirect()->route('Teachers.index');
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -75,7 +75,7 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function deleteTeacher($id){
         $teacher = Teacher::findOrFail($id)->delete();
 
-        toastr()->success('Deleted');
+        // toastr()->success('Deleted');
         return redirect()->route('Teachers.index');
     }
 }

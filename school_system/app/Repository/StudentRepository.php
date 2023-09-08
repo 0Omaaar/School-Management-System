@@ -101,7 +101,7 @@ class StudentRepository implements StudentRepositoryInterface
 
             DB::commit();
 
-            toastr()->success('success');
+            // toastr()->success('success');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -125,7 +125,7 @@ class StudentRepository implements StudentRepositoryInterface
             $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;
             $students->save();
-            toastr()->success('success');
+            // toastr()->success('success');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -145,7 +145,7 @@ class StudentRepository implements StudentRepositoryInterface
             $images->imageable_type = 'App\Models\Student';
             $images->save();
         }
-        toastr()->success('success');
+        // toastr()->success('success');
         return redirect()->route('Students.show',$request->student_id);
     }
 
@@ -160,7 +160,7 @@ class StudentRepository implements StudentRepositoryInterface
 
         // Delete in data
         Image::where('id',$request->id)->where('filename',$request->filename)->delete();
-        toastr()->success('Delete');
+        // toastr()->success('Delete');
         return redirect()->route('Students.show',$request->student_id);
     }
 
@@ -168,7 +168,7 @@ class StudentRepository implements StudentRepositoryInterface
         try {
             $student = Student::findOrFail($id);
             $student->forceDelete();
-            toastr()->success('Deleted');
+            // toastr()->success('Deleted');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

@@ -47,7 +47,7 @@ class ClassroomController extends Controller
                 $My_Classes->grade_id = $List_Classe['grade_id'];
                 $My_Classes->save();
             }
-            toastr()->success('Class Added !');
+            // toastr()->success('Class Added !');
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -82,7 +82,7 @@ class ClassroomController extends Controller
                 $classroom->name_class = $request->name_class,
                 $classroom->grade_id = $request->grade_id,
             ]);
-            toastr()->success("Classroom Updated !");
+            // toastr()->success("Classroom Updated !");
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -96,7 +96,7 @@ class ClassroomController extends Controller
         try {
             $classroom = Classroom::findOrFail($id);
             $classroom->delete();
-            toastr()->success("Classroom Deleted !");
+            // toastr()->success("Classroom Deleted !");
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -108,7 +108,7 @@ class ClassroomController extends Controller
         $delete_all_id = explode(",", $request->delete_all_id);
 
         Classroom::whereIn('id', $delete_all_id)->Delete();
-        toastr()->error("Deleted !");
+        // toastr()->error("Deleted !");
         return redirect()->back();
     }
 

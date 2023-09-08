@@ -61,7 +61,7 @@ class FeesInvoicesRepository implements FeesInvoicesRepositoryInterface
 
             DB::commit();
 
-            toastr()->success('success');
+            // toastr()->success('success');
             return redirect()->route('Fees_Invoices.index');
         } catch (\Exception $e) {
             DB::rollback();

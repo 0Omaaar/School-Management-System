@@ -35,7 +35,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->year = $request->year;
             $fees->Fee_type = $request->Fee_type;
             $fees->save();
-            toastr()->success('success');
+            // toastr()->success('success');
             return redirect()->route('Fees.index');
 
         } catch (\Exception $e) {
@@ -63,7 +63,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->year = $request->year;
             $fees->Fee_type = $request->Fee_type;
             $fees->save();
-            toastr()->success('Updated');
+            // toastr()->success('Updated');
             return redirect()->route('Fees.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -75,7 +75,7 @@ class FeesRepository implements FeesRepositoryInterface
     {
         try {
             Fee::destroy($request->id);
-            toastr()->success('Deleted');
+            // toastr()->success('Deleted');
             return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
